@@ -1,0 +1,25 @@
+# Book output
+book/book/
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+
+# Foundry
+contracts/cache/
+contracts/out/
+contracts/lib/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# CRE
+*.wasm
