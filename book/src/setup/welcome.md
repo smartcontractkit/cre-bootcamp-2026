@@ -1,5 +1,7 @@
 # Welcome to CRE Bootcamp
 
+![banner](../assets/banner.png)
+
 Welcome to the **CRE Bootcamp: Building AI-Powered Prediction Markets**!
 
 This is a 2-day hands-on bootcamp designed to give you an in-depth, developer-focused walkthrough of how to build with the Chainlink Runtime Environment (CRE).

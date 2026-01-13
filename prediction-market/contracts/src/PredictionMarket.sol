@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.24;
 
-import {IReceiverTemplate} from "./interfaces/IReceiverTemplate.sol";
+import {ReceiverTemplate} from "./interfaces/ReceiverTemplate.sol";
 
 /// @title PredictionMarket
 /// @notice A simplified prediction market for CRE bootcamp.
-contract PredictionMarket is IReceiverTemplate {
+contract PredictionMarket is ReceiverTemplate {
     error MarketDoesNotExist();
     error MarketAlreadySettled();
     error MarketNotSettled();
@@ -48,7 +48,10 @@ contract PredictionMarket is IReceiverTemplate {
     mapping(uint256 marketId => Market market) internal markets;
     mapping(uint256 marketId => mapping(address user => UserPrediction)) internal predictions;
 
-    constructor() IReceiverTemplate(address(0), bytes10("")) {}
+    /// @notice Constructor sets the Chainlink Forwarder address for security
+    /// @param _forwarderAddress The address of the Chainlink KeystoneForwarder contract
+    /// @dev For Sepolia testnet, use: 0x15fc6ae953e024d975e77382eeec56a9101f9f88
+    constructor(address _forwarderAddress) ReceiverTemplate(_forwarderAddress) {}
 
     // ================================================================
     // │                       Create market                          │
@@ -153,13 +156,7 @@ contract PredictionMarket is IReceiverTemplate {
     // │                      CRE Entry Point                         │
     // ================================================================
 
-    /// @inheritdoc IReceiverTemplate
-    /// @dev TODO: Restrict this to be called only by the Chainlink KeystoneForwarder.
-    function onReport(bytes calldata, bytes calldata report) external override {
-        _processReport(report);
-    }
-
-    /// @inheritdoc IReceiverTemplate
+    /// @inheritdoc ReceiverTemplate
     /// @dev Routes to either market creation or settlement based on prefix byte.
     ///      - No prefix → Create market (Day 1)
     ///      - Prefix 0x01 → Settle market (Day 2)

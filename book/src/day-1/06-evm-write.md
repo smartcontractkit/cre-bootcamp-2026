@@ -107,7 +107,7 @@ throw new Error(`Transaction failed: ${writeResult.txStatus}`);
 
 For a smart contract to receive data from CRE, it must implement the `IReceiver` interface. This interface defines a single `onReport()` function that the Chainlink `KeystoneForwarder` contract calls to deliver verified data.
 
-While you can implement `IReceiver` manually, we recommend using `IReceiverTemplate` - an abstract contract that handles boilerplate like ERC165 support and metadata decoding, letting you focus on your business logic in `_processReport()`.
+While you can implement `IReceiver` manually, we recommend using `ReceiverTemplate` - an abstract contract that handles boilerplate like ERC165 support, metadata decoding, and security checks (forwarder validation), letting you focus on your business logic in `_processReport()`.
 
 > The `MockKeystoneForwarder` contract, that we will use for simulations, on Ethereum Sepolia is located at: [https://sepolia.etherscan.io/address/0x15fc6ae953e024d975e77382eeec56a9101f9f88#code](https://sepolia.etherscan.io/address/0x15fc6ae953e024d975e77382eeec56a9101f9f88#code)
 

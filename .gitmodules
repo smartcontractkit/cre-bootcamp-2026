@@ -1,0 +1,3 @@
+[submodule "prediction-market/contracts/lib/openzeppelin-contracts"]
+	path = prediction-market/contracts/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
