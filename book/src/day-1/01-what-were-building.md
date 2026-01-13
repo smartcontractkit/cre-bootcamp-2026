@@ -61,7 +61,7 @@ After completing this bootcamp, you will be able to:
 - ✅ **Explain** what CRE is and when to use it
 - ✅ **Develop and simulate** CRE workflows in TypeScript
 - ✅ **Use** all CRE triggers (CRON, HTTP, Log) and capabilities (HTTP, EVM Read, EVM Write)
-- ✅ **Connect** AI services to on-chain applications through verifiable workflows
+- ✅ **Connect** AI services to smart contracts through verifiable workflows
 - ✅ **Build** smart contracts compatible with CRE's chain write capability
 
 ## What You'll Learn
