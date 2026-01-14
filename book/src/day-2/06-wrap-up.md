@@ -40,7 +40,9 @@ cd prediction-market/contracts
 
 forge create src/PredictionMarket.sol:PredictionMarket \
   --rpc-url "https://ethereum-sepolia-rpc.publicnode.com" \
-  --private-key $CRE_ETH_PRIVATE_KEY
+  --private-key $CRE_ETH_PRIVATE_KEY \
+  --broadcast \
+  --constructor-args 0x15fc6ae953e024d975e77382eeec56a9101f9f88
 ```
 
 Save the deployed address and update `config.staging.json`:

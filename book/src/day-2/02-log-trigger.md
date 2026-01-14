@@ -70,73 +70,6 @@ We want CRE to:
 2. **Decode** the marketId and question
 3. **Run** our settlement workflow
 
-## Setting Up the Log Trigger
-
-### 1. Compute the Event Signature Hash
-
-```typescript
-import { keccak256, toHex } from "viem";
-
-const SETTLEMENT_REQUESTED_SIGNATURE = "SettlementRequested(uint256,string)";
-const eventHash = keccak256(toHex(SETTLEMENT_REQUESTED_SIGNATURE));
-```
-
-### 2. Configure the Log Trigger
-
-```typescript
-const evmClient = new cre.capabilities.EVMClient(network.chainSelector.selector);
-
-cre.handler(
-  evmClient.logTrigger({
-    // Which contract(s) to watch
-    addresses: [config.evms[0].marketAddress],
-    
-    // Which events to filter for (by topic)
-    topics: [{ values: [eventHash] }],
-    
-    // Wait for finality
-    confidence: "CONFIDENCE_LEVEL_FINALIZED",
-  }),
-  onLogTrigger
-)
-```
-
-### 3. The Callback Function
-
-```typescript
-import { type EVMLog, bytesToHex } from "@chainlink/cre-sdk";
-import { decodeEventLog, parseAbi } from "viem";
-
-const EVENT_ABI = parseAbi([
-  "event SettlementRequested(uint256 indexed marketId, string question)"
-]);
-
-function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
-  // Convert topics to hex format for viem
-  const topics = log.topics.map(t => bytesToHex(t)) as [
-    `0x${string}`,
-    ...`0x${string}`[]
-  ];
-  const data = bytesToHex(log.data);
-
-  // Decode the event
-  const decodedLog = decodeEventLog({
-    abi: EVENT_ABI,
-    data,
-    topics
-  });
-
-  // Extract the values
-  const marketId = decodedLog.args.marketId as bigint;
-  const question = decodedLog.args.question as string;
-
-  runtime.log(`Settlement requested for Market #${marketId}`);
-  runtime.log(`Question: "${question}"`);
-
-  // Continue with EVM Read, AI, EVM Write...
-  return "Processed";
-}
-```
 
 ## Understanding the EVMLog Payload
 
@@ -313,7 +246,7 @@ Please provide the transaction hash and event index for the EVM log event.
 Enter transaction hash (0x...):
 ```
 
-Paste the transaction hash you just saved (from the `requestSettlement` function call).
+Paste the transaction hash from Step 1.
 
 ### 5. Enter event index
 

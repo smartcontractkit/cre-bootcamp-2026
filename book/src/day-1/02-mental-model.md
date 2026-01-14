@@ -15,7 +15,7 @@ Smart contracts have a fundamental limitation: **they can only see what's on the
 - ❌ Can't call AI models
 - ❌ Can't read from other blockchains
 
-CRE bridges this gap by providing a **decentralized runtime** where you can:
+CRE bridges this gap by providing a **verifiable runtime** where you can:
 
 - ✅ Fetch data from any API
 - ✅ Read from multiple blockchains
@@ -51,7 +51,7 @@ const initWorkflow = (config: Config) => {
 
 ### 3. Capabilities
 
-**Capabilities** are what your workflow can DO - decentralized microservices that perform specific tasks:
+**Capabilities** are what your workflow can DO - microservices that perform specific tasks:
 
 | Capability | What It Does |
 |------------|--------------|
@@ -68,8 +68,6 @@ A **DON** is a network of independent nodes that:
 2. Compare their results
 3. Reach consensus using Byzantine Fault Tolerant (BFT) protocols
 4. Return a single, verified result
-
-This means even your API calls are decentralized and verified!
 
 ## The Trigger-and-Callback Pattern
 
@@ -142,7 +140,7 @@ When a trigger fires, here's what happens:
 | **Workflow** | Your automation logic, compiled to WASM |
 | **Trigger** | Event that starts execution (CRON, HTTP, Log) |
 | **Callback** | Function containing your business logic |
-| **Capability** | Decentralized microservice (HTTP, EVM Read/Write) |
+| **Capability** | Microservice that performs specific task (HTTP, EVM Read/Write) |
 | **DON** | Network of nodes that execute with consensus |
 | **Consensus** | BFT protocol ensuring verified results |
 

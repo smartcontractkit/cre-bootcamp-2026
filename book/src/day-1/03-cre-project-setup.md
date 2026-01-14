@@ -34,6 +34,7 @@ Use the arrow keys to navigate: ↓ ↑ → ←
 ? Pick a workflow template: 
   ▸ Helloworld: Typescript Hello World example
     Custom data feed: Typescript updating on-chain data periodically using offchain API data
+    Confidential Http: Typescript example using the confidential http capability
 ```
 
 **Select:** `Helloworld` and press Enter.

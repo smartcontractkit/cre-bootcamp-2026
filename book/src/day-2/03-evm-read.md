@@ -109,64 +109,7 @@ const GET_MARKET_ABI = [
 ] as const;
 ```
 
-### Step 2: Encode the Function Call
-
-```typescript
-import { encodeFunctionData } from "viem";
-
-const callData = encodeFunctionData({
-  abi: GET_MARKET_ABI,
-  functionName: "getMarket",
-  args: [marketId],  // e.g., 0n for market ID 0
-});
-```
-
-### Step 3: Call the Contract
-
-```typescript
-import { 
-  cre, 
-  encodeCallMsg, 
-  LAST_FINALIZED_BLOCK_NUMBER,
-  bytesToHex 
-} from "@chainlink/cre-sdk";
-import { zeroAddress } from "viem";
-
-const evmClient = new cre.capabilities.EVMClient(
-  network.chainSelector.selector
-);
-
-const result = evmClient
-  .callContract(runtime, {
-    call: encodeCallMsg({
-      from: zeroAddress,      // Use zero address for reads
-      to: contractAddress,    // Your contract
-      data: callData,         // Encoded function call
-    }),
-    blockNumber: LAST_FINALIZED_BLOCK_NUMBER,
-  })
-  .result();
-```
-
-### Step 4: Decode the Result
-
-```typescript
-import { decodeFunctionResult } from "viem";
-
-const market = decodeFunctionResult({
-  abi: GET_MARKET_ABI,
-  functionName: "getMarket",
-  data: bytesToHex(result.data),
-}) as Market;
-
-runtime.log(`Question: ${market.question}`);
-runtime.log(`Creator: ${market.creator}`);
-runtime.log(`Settled: ${market.settled}`);
-runtime.log(`Yes Pool: ${market.totalYesPool}`);
-runtime.log(`No Pool: ${market.totalNoPool}`);
-```
-
-## Complete Example
+### Step 2: Update the `logCallback.ts` file
 
 Now let's update `my-workflow/logCallback.ts` to add EVM Read functionality:
 
@@ -180,7 +123,6 @@ import {
   getNetwork,
   bytesToHex,
   encodeCallMsg,
-  LAST_FINALIZED_BLOCK_NUMBER,
 } from "@chainlink/cre-sdk";
 import {
   decodeEventLog,
@@ -284,7 +226,6 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
         to: evmConfig.marketAddress,
         data: callData,
       }),
-      blockNumber: LAST_FINALIZED_BLOCK_NUMBER,
     })
     .result();
 

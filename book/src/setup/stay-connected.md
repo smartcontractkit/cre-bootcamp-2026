@@ -10,7 +10,7 @@
 
 ## Our Upcoming Events
 
-### 🏆 CRE Hackathon - February 2025
+### 🏆 CRE Hackathon - February 2026
 
 **This bootcamp is your launchpad to the February Hackathon!**
 

@@ -16,18 +16,6 @@ We're building an **AI-Powered Prediction Market** - a complete system where:
 6. **CRE writes** the verified settlement back on-chain
 7. **Winners claim** their share of the losing pool
 
-### The Problem We're Solving
-
-Traditional prediction markets have issues:
-- Manual settlement processes
-- Reliance on centralized operators
-- No verifiable, automated resolution
-
-**With CRE**, we can:
-- Automate settlement with AI
-- Make everything verifiable and decentralized
-- React to on-chain events in real-time
-
 ## Architecture Overview
 
 ```
@@ -73,7 +61,7 @@ After completing this bootcamp, you will be able to:
 | CRE CLI Setup | Install tools, create account, verify setup |
 | CRE Mental Model | What CRE is, Workflows, Capabilities, DONs |
 | Project Setup | `cre init`, project structure, first simulation |
-| Smart Contract | Deploy PredictionMarket.sol with betting |
+| Smart Contract | Develop PredictionMarket.sol  |
 | HTTP Trigger | Receive external HTTP requests |
 | EVM Write | Write data to the blockchain |
 

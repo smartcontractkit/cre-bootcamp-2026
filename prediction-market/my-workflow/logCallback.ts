@@ -9,7 +9,6 @@ import {
   hexToBase64,
   TxStatus,
   encodeCallMsg,
-  LAST_FINALIZED_BLOCK_NUMBER,
 } from "@chainlink/cre-sdk";
 import {
   decodeEventLog,
@@ -157,8 +156,7 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
           from: zeroAddress,
           to: evmConfig.marketAddress,
           data: callData,
-        }),
-        blockNumber: LAST_FINALIZED_BLOCK_NUMBER,
+        })
       })
       .result();
 
