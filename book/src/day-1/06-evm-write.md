@@ -9,11 +9,6 @@ The EVM Write capability enables your workflow to submit cryptographically signe
 1. **Generate a signed report** - Your data is ABI-encoded and wrapped in a cryptographically signed "package"
 2. **Submit the report** - The signed report is submitted to your consumer contract via the Chainlink `KeystoneForwarder`
 
-This approach ensures:
-- **Decentralization**: Multiple nodes in the DON agree on what data to write
-- **Verification**: The blockchain has cryptographic proof the data came from a trusted Chainlink network
-- **Accountability**: A verifiable trail showing which workflow and owner created the data
-
 ### Creating the EVM client
 
 ```typescript

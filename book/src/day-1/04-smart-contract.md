@@ -313,9 +313,7 @@ We'll create a new Foundry project for our smart contract. From your `prediction
 
 ```bash
 # Create a new Foundry project
-forge init contracts --no-git
-
-cd contracts
+forge init contracts
 ```
 
 You'll see:
@@ -325,35 +323,11 @@ Installing dependencies...
 Installed forge-std
 ```
 
-### Project Structure
-
-Your complete project structure now includes both the CRE workflow and the Foundry contracts:
-
-```bash
-prediction-market/
-├── project.yaml              # CRE project-wide settings
-├── secrets.yaml              # CRE secret variable mappings
-├── my-workflow/              # CRE workflow directory
-│   ├── workflow.yaml         # Workflow-specific settings
-│   ├── main.ts               # Workflow entry point
-│   ├── config.staging.json   # Configuration for simulation
-│   ├── package.json          # Node.js dependencies
-│   └── tsconfig.json         # TypeScript configuration
-└── contracts/                # Foundry project (newly created)
-    ├── foundry.toml          # Foundry configuration
-    ├── script/               # Deployment scripts (we won't use these)
-    ├── src/
-    │   ├── PredictionMarket.sol
-    │   └── interfaces/
-    │       ├── IReceiver.sol
-    │       └── ReceiverTemplate.sol
-    └── test/                 # Tests (optional)
-```
-
 ### Create the Contract Files
 
 1. **Create the interface directory:**
 ```bash
+cd contracts
 mkdir -p src/interfaces
 ```
 
@@ -638,6 +612,31 @@ remappings = [
 
 5. **Create `src/PredictionMarket.sol`** with the contract code shown above.
 
+### Project Structure
+
+Your complete project structure now includes both the CRE workflow and the Foundry contracts:
+
+```bash
+prediction-market/
+├── project.yaml              # CRE project-wide settings
+├── secrets.yaml              # CRE secret variable mappings
+├── my-workflow/              # CRE workflow directory
+│   ├── workflow.yaml         # Workflow-specific settings
+│   ├── main.ts               # Workflow entry point
+│   ├── config.staging.json   # Configuration for simulation
+│   ├── package.json          # Node.js dependencies
+│   └── tsconfig.json         # TypeScript configuration
+└── contracts/                # Foundry project (newly created)
+    ├── foundry.toml          # Foundry configuration
+    ├── script/               # Deployment scripts (we won't use these)
+    ├── src/
+    │   ├── PredictionMarket.sol
+    │   └── interfaces/
+    │       ├── IReceiver.sol
+    │       └── ReceiverTemplate.sol
+    └── test/                 # Tests (optional)
+```
+
 ### Compile the Contract
 
 ```bash
@@ -662,8 +661,8 @@ source ../.env
 forge create src/PredictionMarket.sol:PredictionMarket \
   --rpc-url "https://ethereum-sepolia-rpc.publicnode.com" \
   --private-key $CRE_ETH_PRIVATE_KEY \
-  --constructor-args 0x15fc6ae953e024d975e77382eeec56a9101f9f88 \
-  --broadcast
+  --broadcast \
+  --constructor-args 0x15fc6ae953e024d975e77382eeec56a9101f9f88
 ```
 
 > **Note**: The `source ../.env` command loads variables from the `.env` file in the `prediction-market` directory (parent of `contracts`).
