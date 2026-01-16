@@ -6,14 +6,14 @@ Before we dive into building, let's see the end result in action.
 
 ## The Use Case: AI-Powered Prediction Markets
 
-We're building an **AI-Powered Prediction Market** - a complete system where:
+We're building an **AI-Powered Onchain Prediction Market** - a complete system where:
 
-1. **Markets are created** via HTTP-triggered CRE workflows
+1. **Onchain Markets are created** via HTTP-triggered CRE workflows
 2. **Users make predictions** by staking ETH on Yes or No
 3. **Users can request settlement** for any market
 4. **CRE automatically detects** settlement requests via Log Triggers
 5. **Google Gemini AI** determines the market outcome
-6. **CRE writes** the verified settlement back on-chain
+6. **CRE writes** the verified outcome back onchain
 7. **Winners claim** their share of the losing pool
 
 ## Architecture Overview

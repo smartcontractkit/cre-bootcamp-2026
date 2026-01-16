@@ -4,10 +4,10 @@ Complete these steps **before** the bootcamp begins to ensure a smooth experienc
 
 ## This Book
 
-This book is available at:
+This book's source text along with the project source code is available at:
 
 ```bash
-https://smartcontractkit.github.io/cre-bootcamp-2026/
+https://github.com/smartcontractkit/cre-bootcamp-2026/
 ```
 
 ## Important Prerequisites
