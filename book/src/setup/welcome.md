@@ -6,7 +6,7 @@ Welcome to the **CRE Bootcamp: Building AI-Powered Prediction Markets**!
 
 This is a 2-day hands-on bootcamp designed to give you an in-depth, developer-focused walkthrough of how to build with the Chainlink Runtime Environment (CRE).
 
-## 🎤 Meet Your Instructor
+## 🎤 Meet Your Instructors
 
 ### Andrej Rakic
 **DevRel Engineer, Chainlink Labs**
@@ -16,6 +16,15 @@ This is a 2-day hands-on bootcamp designed to give you an in-depth, developer-fo
 X (Twitter): [@andrej_dev](https://x.com/andrej_dev)
 
 LinkedIn: [Andrej Rakic](https://www.linkedin.com/in/andrejrakic/)
+
+### Solange Gueiros
+**DevRel Education Manager, Chainlink Labs**
+
+![img](https://pbs.twimg.com/profile_images/1260607243436859397/SHlzS-Vl_200x200.jpg)
+
+X (Twitter): [@solangegueiros](https://twitter.com/solangegueiros)
+
+LinkedIn: [Solange Gueiros](https://www.linkedin.com/in/solangegueiros/)
 
 ## Run of Show
 
