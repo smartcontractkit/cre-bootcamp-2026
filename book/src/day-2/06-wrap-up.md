@@ -118,8 +118,6 @@ Connect chains, data, AI, and enterprise systems - all in one workflow.
 
 Put your new CRE skills to the test! Join the upcoming hackathon and build something amazing.
 
-Register now 👉 **[hack.chain.link](https://hack.chain.link)**
-
 Ideas to explore:
 - Stablecoin Issuance
 - Tokenized Asset Servicing and Lifecycle Management
