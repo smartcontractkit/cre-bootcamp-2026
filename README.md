@@ -79,20 +79,25 @@ The main focus of the bootcamp will be the following:
 │   └── secrets.yaml  # secrets for CRE to use at runtime
 ```
 
-### 2 Prerequisites
-
-Please make sure you have the following readily available before you proceed further.
-
-> TODO TODO TODO RPCs, Gemini, Private Key, Native Token for deploy, Foundry, Bun etc
-
 ### 2. Set up environment variables
 
-Create `.env` in `prediction-market/`:
+Create `.env` in `prediction-market/` and set `CRE_ETH_PRIVATE_KEY` and `GEMINI_API_KEY_VAR` variables:
 
 ```bash
-CRE_ETH_PRIVATE_KEY=your_private_key
+###############################################################################
+### REQUIRED ENVIRONMENT VARIABLES - SENSITIVE INFORMATION                  ###
+### DO NOT STORE RAW SECRETS HERE IN PLAINTEXT IF AVOIDABLE                 ###
+### DO NOT UPLOAD OR SHARE THIS FILE UNDER ANY CIRCUMSTANCES                ###
+###############################################################################
+
+# Ethereum private key or 1Password reference (e.g. op://vault/item/field)
+CRE_ETH_PRIVATE_KEY=YOUR_PRIVATE_KEY_HERE
+
+# Default target used when --target flag is not specified (e.g. staging-settings, production-settings, my-target)
 CRE_TARGET=staging-settings
-GEMINI_API_KEY=your_gemini_api_key
+
+# Gemini configuration: API Key
+GEMINI_API_KEY_VAR=YOUR_GEMINI_API_KEY_HERE
 ```
 
 ### 3. Install workflow dependencies
@@ -112,10 +117,11 @@ cd contracts
 forge create src/PredictionMarket.sol:PredictionMarket \
   --rpc-url "https://ethereum-sepolia-rpc.publicnode.com" \
   --private-key $CRE_ETH_PRIVATE_KEY \
+  --broadcast \
   --constructor-args 0x15fc6ae953e024d975e77382eeec56a9101f9f88
 ```
 
-> !Note: the contructor argument is the [CRE Forwarder Contract](https://docs.chain.link/cre/guides/workflow/using-evm-client/supported-networks-go#understanding-forwarder-addresses) address.
+> Note: the contructor argument is the [CRE Forwarder Contract](https://docs.chain.link/cre/guides/workflow/using-evm-client/supported-networks-go#understanding-forwarder-addresses) address.
 
 Save the deployed Prediction Market Contract address and update `my-workflow/config.staging.json`:
 
@@ -155,7 +161,7 @@ cast send $MARKET_ADDRESS \
   --private-key $CRE_ETH_PRIVATE_KEY
 ```
 
-> !Note: `0 0` above corresponds to do the Market Id and the prediction (Yes = 0, No = 1). See the `predict()` function in `./prediction-market/contracts/src/PredictionMarket.sol`
+> Note: `0 0` above corresponds to do the Market Id and the prediction (Yes = 0, No = 1). See the `predict()` function in `./prediction-market/contracts/src/PredictionMarket.sol`
 
 ### 7. Request settlement
 

@@ -108,11 +108,17 @@ cast send $MARKET_ADDRESS \
 
 ## What's Next?
 
-### 🏆 February Hackathon
+### 🏆 Convergence: A Chainlink Hackathon
 
-Put your new CRE skills to the test! Join the upcoming hackathon and build something amazing:
+![cre-hackathon-2026](../assets/cre-hackathon-2026.png)
 
-**[hack.chain.link](https://hack.chain.link)**
+The **Convergence Hackathon** invites you to create advanced smart contracts using the Chainlink Runtime Environment, with $100K in prizes up for grabs.
+
+Connect chains, data, AI, and enterprise systems - all in one workflow.
+
+Put your new CRE skills to the test! Join the upcoming hackathon and build something amazing.
+
+Register now 👉 **[hack.chain.link](https://hack.chain.link)**
 
 Ideas to explore:
 - Stablecoin Issuance
@@ -140,6 +146,14 @@ Check out [5 Ways to Build with CRE](https://blog.chain.link/5-ways-to-build-wit
 3. **AI-Powered Prediction Markets** - You just built this!
 4. **AI Agents with x402 Payments** - Autonomous agents
 5. **Custom Proof of Reserve** - Transparency infrastructure
+
+### 🔗 Useful CRE links
+
+- [Consensus Computing](https://docs.chain.link/cre/concepts/consensus-computing)
+- [Finality and Confidence Levels](https://docs.chain.link/cre/concepts/finality-ts)
+- [Secrets Management](https://docs.chain.link/cre/guides/workflow/secrets)
+- [Deploying Workflows](https://docs.chain.link/cre/guides/operations/deploying-workflows)
+- [Monitoring & Debugging Workflows](https://docs.chain.link/cre/guides/operations/monitoring-workflows)
 
 ### 🚀 Deploy to Production
 

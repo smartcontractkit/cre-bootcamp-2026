@@ -25,6 +25,7 @@ Build your first CRE workflow that creates prediction markets on-chain:
 - CRE Mental Model & Project Setup
 - Smart Contract Deployment
 - HTTP Trigger & EVM Write Capability
+- ❓ Q&A - Open floor for questions
 
 ### 📅 Day 2: Complete Settlement Workflow (2 hours)
 
@@ -33,7 +34,5 @@ Wire together a complete AI-powered settlement system:
 - EVM Read Capability
 - AI Integration with Google Gemini
 - End-to-End Settlement Flow
+- ❓ Q&A - Open floor for questions
 
-### ❓ Q&A
-
-Open floor for questions about CRE, building with these technologies, and this bootcamp!

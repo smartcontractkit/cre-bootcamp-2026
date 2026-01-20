@@ -1,9 +1,5 @@
 # What We're Building
 
-## 🎬 Demo Time!
-
-Before we dive into building, let's see the end result in action.
-
 ## The Use Case: AI-Powered Prediction Markets
 
 We're building an **AI-Powered Onchain Prediction Market** - a complete system where:
@@ -14,7 +10,7 @@ We're building an **AI-Powered Onchain Prediction Market** - a complete system w
 4. **CRE automatically detects** settlement requests via Log Triggers
 5. **Google Gemini AI** determines the market outcome
 6. **CRE writes** the verified outcome back onchain
-7. **Winners claim** their share of the losing pool
+7. **Winners claim** their share of the total pool → `Your stake * (Total Pool / Winning Pool)`
 
 ## Architecture Overview
 
@@ -79,3 +75,7 @@ After completing this bootcamp, you will be able to:
 
 **End of Day 2**: Full AI-powered settlement working end-to-end!
 
+
+## 🎬 Demo Time!
+
+Before we dive into building, let's see the end result in action.

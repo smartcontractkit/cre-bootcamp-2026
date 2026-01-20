@@ -279,6 +279,10 @@ If you need to update it, edit the `.env` file in the `prediction-market` direct
 
 ### 3. Simulate with broadcast
 
+By default, the simulator performs a dry run for onchain write operations. It prepares the transaction but does not broadcast it to the blockchain.
+
+To actually broadcast transactions during simulation, use the `--broadcast` flag:
+
 ```bash
 # From the prediction-market directory
 cd prediction-market
