@@ -7,7 +7,7 @@ Complete these steps **before** the bootcamp begins to ensure a smooth experienc
 This book is available at:
 
 ```bash
-https://smartcontractkit.github.io/cre-bootcamp-2026/
+https://smartcontractkit.github.io/cre-bootcamp-2026
 ```
 
 ## Important Prerequisites

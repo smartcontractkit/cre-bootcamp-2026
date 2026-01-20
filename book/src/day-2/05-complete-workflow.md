@@ -201,7 +201,7 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
           from: zeroAddress,
           to: evmConfig.marketAddress,
           data: callData,
-        }),
+        })
       })
       .result();
 

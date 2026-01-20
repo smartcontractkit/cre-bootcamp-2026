@@ -10,11 +10,19 @@
 
 ## Our Upcoming Events
 
-### 🏆 CRE Hackathon - February 2026
+### 🏆 Convergence: A Chainlink Hackathon
+
+![cre-hackathon-2026](../assets/cre-hackathon-2026.png)
+
+The **Convergence Hackathon** invites you to create advanced smart contracts using the Chainlink Runtime Environment, with $100K in prizes up for grabs.
+
+Connect chains, data, AI, and enterprise systems - all in one workflow.
 
 **This bootcamp is your launchpad to the February Hackathon!**
 
 Everything you learn here - CRE workflows, AI integration, on-chain automation - prepares you to compete for prizes and build production-ready applications.
 
-👉 **[hack.chain.link](https://hack.chain.link)**
+Build the future with Chainlink.
+
+Register now 👉 **[hack.chain.link](https://hack.chain.link)**
 

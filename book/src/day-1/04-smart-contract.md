@@ -28,7 +28,7 @@ Our prediction market supports four key actions:
 │                                                                         │
 │  4. CLAIM WINNINGS                                                      │
 │     Winners claim their share of the total pool                         │
-│     → Your stake × (Total Pool / Winning Pool)                          │
+│     → Your stake * (Total Pool / Winning Pool)                          │
 │                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
@@ -696,6 +696,8 @@ Update `config.staging.json`:
   ]
 }
 ```
+
+We set `gasLimit` to `500000` for this example because that's sufficient, but other use cases may consume more gas.
 
 > **Note**: We'll create markets via the HTTP trigger workflow in the next chapters. For now, you just need the contract deployed!
 

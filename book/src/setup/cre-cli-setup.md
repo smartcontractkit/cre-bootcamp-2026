@@ -16,7 +16,7 @@ The **CRE CLI** is essential for compiling and simulating workflows. It compiles
 
 ### Option 1: Automatic Installation
 
-The easiest way to install the CRE CLI is using the installation script:
+The easiest way to install the CRE CLI is using the installation script ([reference docs](https://docs.chain.link/cre/getting-started/cli-installation)):
 
 #### macOS/Linux
 
