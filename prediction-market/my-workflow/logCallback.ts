@@ -183,19 +183,12 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
 
     const geminiResult = askGemini(runtime, question);
     
-    // Parse AI response (Structured Output ensures this is valid JSON)
-    let parsed: GeminiResult;
-    try {
-      parsed = JSON.parse(geminiResult.geminiResponse.trim()) as GeminiResult;
-    } catch (err) {
-      // Fallback: Gemini sometimes still includes markdown code fences even with application/json
-      const jsonMatch = geminiResult.geminiResponse.match(/\{[\s\S]*"result"[\s\S]*"confidence"[\s\S]*\}/);
-      if (jsonMatch) {
-        parsed = JSON.parse(jsonMatch[0]) as GeminiResult;
-      } else {
-        throw new Error(`Failed to parse AI response: ${geminiResult.geminiResponse}. ResponseID: ${geminiResult.responseId}`);
-      }
+    // Extract JSON from response (AI may include prose before/after the JSON)
+    const jsonMatch = geminiResult.geminiResponse.match(/\{[\s\S]*"result"[\s\S]*"confidence"[\s\S]*\}/);
+    if (!jsonMatch) {
+      throw new Error(`Could not find JSON in AI response: ${geminiResult.geminiResponse}`);
     }
+    const parsed = JSON.parse(jsonMatch[0]) as GeminiResult;
 
     // Validate the result - only YES or NO can settle a market
     if (!["YES", "NO"].includes(parsed.result)) {

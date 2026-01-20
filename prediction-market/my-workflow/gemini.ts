@@ -1,6 +1,12 @@
 // prediction-market/my-workflow/gemini.ts
 
-import { cre, ok, consensusIdenticalAggregation, type Runtime, type HTTPSendRequester } from "@chainlink/cre-sdk";
+import {
+  cre,
+  ok,
+  consensusIdenticalAggregation,
+  type Runtime,
+  type HTTPSendRequester,
+} from "@chainlink/cre-sdk";
 
 // Inline types
 type Config = {
@@ -20,10 +26,6 @@ interface GeminiData {
   contents: Array<{
     parts: Array<{ text: string }>;
   }>;
-  generationConfig?: {
-    responseMimeType?: "application/json" | "text/plain";
-    responseSchema?: object;
-  };
 }
 
 interface GeminiApiResponse {
@@ -111,18 +113,6 @@ const buildGeminiRequest =
           parts: [{ text: USER_PROMPT + question }],
         },
       ],
-      // Force JSON rather than text response.
-      generationConfig: {
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: "object",
-          properties: {
-            result: { type: "string", enum: ["YES", "NO"] },
-            confidence: { type: "integer" },
-          },
-          required: ["result", "confidence"],
-        },
-      },
     };
 
     const bodyBytes = new TextEncoder().encode(JSON.stringify(requestData));
@@ -138,7 +128,7 @@ const buildGeminiRequest =
       },
       cacheSettings: {
         store: true,
-        maxAge: "60s",
+        maxAge: '60s',
       },
     };
 
