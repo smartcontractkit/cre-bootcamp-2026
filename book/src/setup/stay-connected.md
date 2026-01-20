@@ -22,7 +22,3 @@ Connect chains, data, AI, and enterprise systems - all in one workflow.
 
 Everything you learn here - CRE workflows, AI integration, on-chain automation - prepares you to compete for prizes and build production-ready applications.
 
-Build the future with Chainlink.
-
-Register now 👉 **[hack.chain.link](https://hack.chain.link)**
-
