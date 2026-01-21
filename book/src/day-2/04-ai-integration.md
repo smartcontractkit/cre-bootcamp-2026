@@ -319,6 +319,23 @@ const buildGeminiRequest =
   };
 ```
 
+## Troubleshooting
+
+### Gemini API error: 429
+
+If you are seeing the following error:
+
+```bash
+[USER LOG] [ERROR] Error failed to execute capability: [2]Unknown: Gemini API error: 429 - {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details.
+```
+
+Make sure to set up billing for your Gemini API key on the [Google AI Studio](https://aistudio.google.com/app/apikey)) dashboard. You will need to connect your credit card to activate billing, but no worries—the free tier is more than enough to complete this bootcamp.
+
+![gemini-billing](../assets/gemini-billing.png)
+
 ## Summary
 
 You've learned:

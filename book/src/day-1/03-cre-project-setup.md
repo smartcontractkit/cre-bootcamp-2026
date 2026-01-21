@@ -104,6 +104,12 @@ Replace the placeholder values:
 - `YOUR_PRIVATE_KEY_HERE`: Your Ethereum private key (with `0x` prefix)
 - `YOUR_GEMINI_API_KEY_HERE`: Your Google Gemini API key (get one from [Google AI Studio](https://aistudio.google.com/app/apikey))
 
+**Note about Gemini API key**
+
+Make sure to set up billing for your Gemini API key on the Google AI Studio dashboard to avoid getting the `Gemini API error: 429` later. You will need to connect your credit card to activate billing, but no worries - the free tier is more than enough to complete this bootcamp.
+
+![gemini-billing](../assets/gemini-billing.png)
+
 ## Step 3: Explore the Project Structure
 
 Let's see what `cre init` created for us:
