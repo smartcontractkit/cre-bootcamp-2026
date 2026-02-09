@@ -75,6 +75,22 @@ export PATH="$HOME/.cre/bin:$PATH"
 source ~/.zshrc  # or ~/.bashrc
 ```
 
+### Login failed on WSL for Windows
+
+In case you're running an environment with WSL you might have an issue with the callback URL that is
+returned to your browser after you do the login to the CRE portal with your CRE account.
+
+If that happens, after the browser tries to open the callback URL and fails, simply copy the whole URL,
+create a new terminal window that is attached to your WSL instance and run a `wget` command to the URL, example:
+
+```bash
+wget http://localhost:53682/callback?code=<code>&state=<state>
+```
+
+This will make your terminal to reach this URL from the inside of the WSL instance, which will make the callback to
+be called locally, then and you will see a message `Login completed successfully. To get started, run: cre init`
+in the terminal that you executed the `cre login` command.
+
 ## What's Now Possible?
 
 Now that your CRE environment is set up, you can:
