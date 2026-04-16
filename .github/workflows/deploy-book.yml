@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - 'book/**'
+      - 'book-es/**'
+      - 'book-pt/**'
+      - 'book-zh/**'
       - '.github/workflows/deploy-book.yml'
   workflow_dispatch:
 
@@ -35,16 +38,36 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Build the book
+      - name: Build English book
         working-directory: ./book
         run: mdbook build
+
+      - name: Build Spanish book
+        working-directory: ./book-es
+        run: mdbook build
+
+      - name: Build Portuguese book
+        working-directory: ./book-pt
+        run: mdbook build
+
+      - name: Build Mandarin book
+        working-directory: ./book-zh
+        run: mdbook build
+
+      - name: Merge into single site
+        run: |
+          set -euo pipefail
+          mkdir -p _site _site/es _site/pt _site/zh
+          cp -R ./book/book/. _site/
+          cp -R ./book-es/book/. _site/es/
+          cp -R ./book-pt/book/. _site/pt/
+          cp -R ./book-zh/book/. _site/zh/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./book/book
+          path: ./_site
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
