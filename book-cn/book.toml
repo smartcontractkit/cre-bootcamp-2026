@@ -1,0 +1,27 @@
+[book]
+title = "CRE 训练营: 开发一个 AI 驱动的预测市场"
+language = "cn"
+description = "3 天 CRE(Chainlink Runtime Environment) 开发训练营"
+src = "src"
+
+[build]
+build-dir = "book"
+
+[output.html]
+default-theme = "navy"
+curly-quotes = true
+
+[output.html.playground]
+editable = false
+line-numbers = true
+
+[output.html.search]
+enable = true
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-split-level = 3
