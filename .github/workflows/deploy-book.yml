@@ -8,7 +8,7 @@ on:
       - 'book/**'
       - 'book-es/**'
       - 'book-pt/**'
-      - 'book-zh/**'
+      - 'book-cn/**'
       - '.github/workflows/deploy-book.yml'
   workflow_dispatch:
 
@@ -51,17 +51,17 @@ jobs:
         run: mdbook build
 
       - name: Build Mandarin book
-        working-directory: ./book-zh
+        working-directory: ./book-cn
         run: mdbook build
 
       - name: Merge into single site
         run: |
           set -euo pipefail
-          mkdir -p _site _site/es _site/pt _site/zh
+          mkdir -p _site _site/es _site/pt _site/cn
           cp -R ./book/book/. _site/
           cp -R ./book-es/book/. _site/es/
           cp -R ./book-pt/book/. _site/pt/
-          cp -R ./book-zh/book/. _site/zh/
+          cp -R ./book-cn/book/. _site/cn/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
