@@ -1,5 +1,8 @@
-# Book output
+# Book output (mdBook [build] build-dir per project)
 book/book/
+book-es/book-es/
+book-pt/book-pt/
+book-cn/book/
 
 # Dependencies
 node_modules/
