@@ -116,26 +116,25 @@ const value = secret.value; // The actual secret string
 
 ---
 
-## 构建我们的 Gemini 集成
+## 构建我们的 Deepseek 集成
 
 下面把这些概念用起来，完成 AI 集成。
 
-### Gemini API 概览
+### Deepseek API 概览
 
-我们将使用 Google 的 Gemini API：
-- Endpoint：`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`
+我们将使用 deepseek API：
+- Endpoint：`https://api.deepseek.com/chat/completions`
 - 认证：在 header 中携带 API key
-- 特性：Google Search grounding，用于事实性回答
 
 ## 步骤 1：配置 Secrets
 
-首先，确保已配置好 Gemini API key。
+首先，确保已配置好 Deepseek API key。
 
 **secrets.yaml：**
 ```yaml
 secretsNames:
-    GEMINI_API_KEY:          # Use this name in workflows to access the secret
-        - GEMINI_API_KEY_VAR # Name of the variable in the .env file
+    DEEPSEEK_API_KEY:          # Use this name in workflows to access the secret
+        - DEEPSEEK_API_KEY_VAR # Name of the variable in the .env file
 ```
 
 然后，在 `my-workflow/workflow.yaml` 中把 `secrets-path` 更新为 `"../secrets.yaml"`
@@ -154,15 +153,15 @@ staging-settings:
 
 **在你的 callback 中：**
 ```typescript
-const apiKey = runtime.getSecret({ id: "GEMINI_API_KEY" }).result();
+const apiKey = .getSecret({ id: "DEEPSEEK_API_KEY" }).result()
 ```
 
-## 步骤 2：创建 gemini.ts 文件
+## 步骤 2：创建 deepseek.ts 文件
 
-新建文件 `my-workflow/gemini.ts`：
+新建文件 `my-workflow/deepseek.ts`：
 
 ```typescript
-// prediction-market/my-workflow/gemini.ts
+// prediction-market/my-workflow/deepseek.ts
 
 import {
   cre,
@@ -174,7 +173,7 @@ import {
 
 // Inline types
 type Config = {
-  geminiModel: string;
+  deepseekModel: string;
   evms: Array<{
     marketAddress: string;
     chainSelectorName: string;
@@ -182,28 +181,30 @@ type Config = {
   }>;
 };
 
-interface GeminiData {
-  system_instruction: {
-    parts: Array<{ text: string }>;
-  };
-  tools: Array<{ google_search: object }>;
-  contents: Array<{
-    parts: Array<{ text: string }>;
+interface DeepSeekMessage {
+  role: "system" | "user" | "assistant";
+  content: string;
+}
+
+interface DeepSeekRequestData {
+  model: string;
+  messages: DeepSeekMessage[];
+  temperature?: number;
+  stream?: false;
+  response_format?: { type: "json_object" };
+}
+
+interface DeepSeekApiResponse {
+  id?: string;
+  choices?: Array<{
+    message?: { content?: string; role?: string };
+    finish_reason?: string;
   }>;
 }
 
-interface GeminiApiResponse {
-  candidates?: Array<{
-    content?: {
-      parts?: Array<{ text?: string }>;
-    };
-  }>;
-  responseId?: string;
-}
-
-interface GeminiResponse {
+interface DeepSeekResponse {
   statusCode: number;
-  geminiResponse: string;
+  aiResponse: string;
   responseId: string;
   rawJsonString: string;
 }
@@ -242,57 +243,58 @@ const USER_PROMPT = `Determine the outcome of this market based on factual infor
 Market question:
 `;
 
-export function askGemini(runtime: Runtime<Config>, question: string): GeminiResponse {
-  runtime.log("[Gemini] Querying AI for market outcome...");
+export function askDeepSeek(
+  runtime: Runtime<Config>,
+  question: string
+): DeepSeekResponse {
+  runtime.log("[DeepSeek] Querying AI for market outcome...");
 
-  const geminiApiKey = runtime.getSecret({ id: "GEMINI_API_KEY" }).result();
+  const deepseekApiKey = runtime
+    .getSecret({ id: "DEEPSEEK_API_KEY" })
+    .result();
   const httpClient = new cre.capabilities.HTTPClient();
 
   const result = httpClient
     .sendRequest(
       runtime,
-      buildGeminiRequest(question, geminiApiKey.value),
-      consensusIdenticalAggregation<GeminiResponse>()
+      buildDeepSeekRequest(question, deepseekApiKey.value),
+      consensusIdenticalAggregation<DeepSeekResponse>()
     )(runtime.config)
     .result();
 
-  runtime.log(`[Gemini] Response received: ${result.geminiResponse}`);
+  runtime.log(`[DeepSeek] Response received: ${result.aiResponse}`);
   return result;
 }
 
-const buildGeminiRequest =
+const buildDeepSeekRequest =
   (question: string, apiKey: string) =>
-  (sendRequester: HTTPSendRequester, config: Config): GeminiResponse => {
-    const requestData: GeminiData = {
-      system_instruction: {
-        parts: [{ text: SYSTEM_PROMPT }],
-      },
-      tools: [
-        {
-          google_search: {},
-        },
+  (sendRequester: HTTPSendRequester, config: Config): DeepSeekResponse => {
+    const requestData: DeepSeekRequestData = {
+      model: config.deepseekModel,
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        { role: "user", content: USER_PROMPT + question },
       ],
-      contents: [
-        {
-          parts: [{ text: USER_PROMPT + question }],
-        },
-      ],
+      // Deterministic output helps consensusIdenticalAggregation converge
+      temperature: 0,
+      stream: false,
+      response_format: { type: "json_object" },
     };
 
     const bodyBytes = new TextEncoder().encode(JSON.stringify(requestData));
     const body = Buffer.from(bodyBytes).toString("base64");
 
     const req = {
-      url: `https://generativelanguage.googleapis.com/v1beta/models/${config.geminiModel}:generateContent`,
+      url: "https://api.deepseek.com/chat/completions",
       method: "POST" as const,
       body,
       headers: {
         "Content-Type": "application/json",
-        "x-goog-api-key": apiKey,
+        Authorization: `Bearer ${apiKey}`,
       },
       cacheSettings: {
         store: true,
-        maxAge: '60s',
+        maxAge: "60s",
       },
     };
 
@@ -300,20 +302,20 @@ const buildGeminiRequest =
     const bodyText = new TextDecoder().decode(resp.body);
 
     if (!ok(resp)) {
-      throw new Error(`Gemini API error: ${resp.statusCode} - ${bodyText}`);
+      throw new Error(`DeepSeek API error: ${resp.statusCode} - ${bodyText}`);
     }
 
-    const apiResponse = JSON.parse(bodyText) as GeminiApiResponse;
-    const text = apiResponse?.candidates?.[0]?.content?.parts?.[0]?.text;
+    const apiResponse = JSON.parse(bodyText) as DeepSeekApiResponse;
+    const text = apiResponse?.choices?.[0]?.message?.content;
 
     if (!text) {
-      throw new Error("Malformed Gemini response: missing text");
+      throw new Error("Malformed DeepSeek response: missing message content");
     }
 
     return {
       statusCode: resp.statusCode,
-      geminiResponse: text,
-      responseId: apiResponse.responseId || "",
+      aiResponse: text,
+      responseId: apiResponse.id || "",
       rawJsonString: bodyText,
     };
   };
@@ -321,20 +323,17 @@ const buildGeminiRequest =
 
 ## 故障排查
 
-### Gemini API 报错：429
+### Deepseek API 报错：402
 
 如果你看到如下错误：
 
 ```bash
-[USER LOG] [ERROR] Error failed to execute capability: [2]Unknown: Gemini API error: 429 - {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please check your plan and billing details.
+Capability 'consensus@1.0.0-alpha' method 'Simple' returned an error: failed to execute capability: [2]Unknown: DeepSeek API error: 402 - {"error":{"message":"Insufficient Balance","type":"unknown_error","param":null,"code":"invalid_request_error"}}
 ```
 
-请在 [Google AI Studio](https://aistudio.google.com/app/apikey)) 控制台为你的 Gemini API key 开通计费。你需要绑定信用卡以启用计费，不过不必担心——免费额度足够完成本 bootcamp。
+请在 [Deepseek Platform](https://platform.deepseek.com/)) 控制台为你的 Deepseek API key 开通计费。海外需要绑定信用卡以启用计费，国内用户可以使用支付宝和微信支付，不必担心——完成本 bootcamp 需要的费用极低，只要 0.01 人民币。
 
-![gemini-billing](../assets/gemini-billing.png)
+![deepseek-billing](../assets/deepseek-billing.png)
 
 ## 小结
 

@@ -8,27 +8,27 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         PREDICTION MARKET FLOW                          │
+│                             预测市场全流程                                │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                         │
-│  1. CREATE MARKET                                                       │
-│     Anyone creates a market with a Yes/No question                      │
-│     Example: "Will Argentina win the 2022 World Cup?"                   │
+│  1. 创建市场                                                             │
+│     每个人都可以创建一个 Yes/No 两个选项的市场                                │
+│     例子: "Will Argentina win the 2022 World Cup?"                       │
 │                                                                         │
-│  2. PREDICT                                                             │
-│     Users stake ETH on Yes or No                                        │
-│     → Funds go into Yes Pool or No Pool                                 │
+│  2. 预测                                                                 │
+│     用户通过质押 ETH 选择 Yes 或者 No                                      │
+│     → 资金回去 Yes 或者 No 的池子                                          │
 │                                                                         │
-│  3. REQUEST SETTLEMENT                                                  │
-│     Anyone can request settlement                                       │
-│     → Emits SettlementRequested event                                   │
-│     → CRE Log Trigger detects event                                     │
-│     → CRE asks Gemini AI for the answer                                 │
-│     → CRE writes outcome back via onReport()                            │
+│  3. 申请结算                                                             │
+│     任何人都可以申请结算                                                   │
+│     → Emits SettlementRequested 事件                                    │
+│     → CRE Log Trigger 监控到 event                                       │
+│     → CRE 询问 Deepseek AI 市场答案。                                     │
+│     → CRE 将结果写入 onReport() 函数                                      │
 │                                                                         │
-│  4. CLAIM WINNINGS                                                      │
-│     Winners claim their share of the total pool                         │
-│     → Your stake * (Total Pool / Winning Pool)                          │
+│  4. 收回资金。                                                            │
+│     赢家可以输家池子中获取自己对应的份额                                      │
+│     → 你质押的数量 * (池子总质押量 / 赢家池子质押数量)                         │
 │                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
