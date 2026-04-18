@@ -2,7 +2,7 @@
 
 **EVM Write** capability 让你的 CRE workflow 可以向 EVM 兼容区块链上的智能合约写入数据。这是 CRE 中最重要的模式之一。
 
-## 熟悉该能力
+## 熟悉该 Capability
 
 EVM Write capability 让你的 workflow 向智能合约提交经密码学签名的 report。与传统直接发送交易的 web3 应用不同，CRE 使用安全的两步流程：
 

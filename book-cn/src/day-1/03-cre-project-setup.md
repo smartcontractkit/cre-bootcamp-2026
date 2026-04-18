@@ -93,8 +93,8 @@ CRE_ETH_PRIVATE_KEY=YOUR_PRIVATE_KEY_HERE
 # Default target used when --target flag is not specified (e.g. staging-settings, production-settings, my-target)
 CRE_TARGET=staging-settings
 
-# Gemini configuration: API Key
-GEMINI_API_KEY_VAR=YOUR_GEMINI_API_KEY_HERE
+# Deepseek configuration: API Key
+DEEPSEEK_API_KEY_VAR=YOUR_DEEPSEEK_API_KEY_HERE
 ```
 
 > ⚠️ **安全提示**：切勿提交 `.env` 或分享私钥！`.gitignore` 已默认排除 `.env` 文件。
@@ -102,13 +102,13 @@ GEMINI_API_KEY_VAR=YOUR_GEMINI_API_KEY_HERE
 
 将占位符替换为实际值：
 - `YOUR_PRIVATE_KEY_HERE`：你的 Ethereum 私钥（带 `0x` 前缀）
-- `YOUR_GEMINI_API_KEY_HERE`：你的 Google Gemini API 密钥（在 [Google AI Studio](https://aistudio.google.com/app/apikey) 获取）
+- `YOUR_DEEPSEEK_API_KEY_HERE`：你的 Deepseek API 密钥（在 [Deepseek AI Studio](https://platform.deepseek.com/api_keys) 获取）
 
-**关于 Gemini API 密钥**
+**关于 Deepseek API 密钥**
 
-请在 Google AI Studio 控制台为 Gemini API 密钥开通计费，以免后续出现 `Gemini API error: 429`。需要绑定信用卡以启用计费，不必担心——免费额度足够完成本训练营。
+请在 [Deepseek 控制台](https://platform.deepseek.com/api_keys) 为 Deepseek API 密钥开通计费，以免后续出现 `402 - {"error":{"message":"Insufficient Balance","type":"unknown_error","param":null,"code":"invalid_request_error"}}`。海外用户需要绑定信用卡以启用计费，国内用户直接使用支付宝/微信支付最小额度，本次演示预计只会消耗 0.01 人民币。
 
-![gemini-billing](../assets/gemini-billing.png)
+![deepseek-billing](../assets/deepseek-billing.png)
 
 ## 步骤 3：浏览项目结构
 
@@ -221,3 +221,19 @@ cre.handler(trigger, callback)
 | `cre init` | 创建新的 CRE 项目 |
 | `cre workflow simulate <name>` | 在本地模拟 workflow |
 | `cre workflow simulate <name> --broadcast` | 模拟并执行真实链上写入 |
+
+## 🎉 第 1 天课程完成！
+
+你已经成功：
+
+- ✅ 了解 CRE 功能和基础架构
+- ✅ 新建 CRE 项目
+- ✅ 进行了 CRE workflow 的模拟
+
+明天我们将添加：
+
+- HTTP Trigger（响应 HTTP 请求）
+- 部署预测市场的智能合约
+- EVM Write（将数据写入区块链）
+
+**明天见！**

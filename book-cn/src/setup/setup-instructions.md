@@ -7,12 +7,12 @@
 本教程可在以下地址访问：
 
 ```bash
-https://qingyangkong.github.io/cre-bootcamp-2026
+https://smartcontractkit.github.io/cre-bootcamp-2026/cn/
 ```
 
 ## 重要的前置准备
 
-为了充分利用本训练营，我们建议你在**Day 1 之前**准备好以下环境。部分内容会在课上简要介绍，以便我们将更多时间用于实操。
+为了充分利用本训练营，我们建议你在**开始之前**准备好以下环境。部分内容会在课上简要介绍，以便我们将更多时间用于实操。
 
 ### 必需环境
 
@@ -22,7 +22,7 @@ https://qingyangkong.github.io/cre-bootcamp-2026
 - **Foundry** - [安装说明](https://book.getfoundry.sh/getting-started/installation)
 - **将 Ethereum Sepolia 网络添加到你的钱包** - [在此添加](https://chainlist.org/chain/11155111)
 - **从水龙头获取 Sepolia ETH** - [Chainlink Faucet](https://faucets.chain.link/sepolia)
-- **Gemini LLM API 密钥** - [从 Google AI Studio 获取](https://aistudio.google.com/apikey)
+- **Deepseek LLM API 密钥** - [从 Google AI Studio 获取](https://platform.deepseek.com/)
 
 ### 建议安装
 
@@ -39,4 +39,4 @@ https://qingyangkong.github.io/cre-bootcamp-2026
 https://github.com/smartcontractkit/cre-bootcamp-2026
 ```
 
-> **说明**：你不需要克隆它！训练营期间我们会从头开始构建所有内容。该仓库仅在你遇到问题或想对照代码时使用。
+> **说明**：你不需要克隆这个代码仓库！训练营期间我们会从头开始构建所有内容。该仓库仅在你遇到问题或想对照代码时使用。
