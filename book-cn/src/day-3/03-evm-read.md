@@ -223,14 +223,14 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
     .callContract(runtime, {
       call: encodeCallMsg({
         from: zeroAddress,
-        to: evmConfig.marketAddress,
+        to: evmConfig.marketAddress as `0x${string}`,
         data: callData,
       }),
     })
     .result();
 
   const market = decodeFunctionResult({
-    abi: GET_MARKET_ABI,
+    abi: GET_MARKET_ABI as any,
     functionName: "getMarket",
     data: bytesToHex(readResult.data),
   }) as Market;

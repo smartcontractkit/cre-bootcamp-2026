@@ -78,7 +78,7 @@ const writeResult = evmClient
 
 ### 问：为什么需要两步写入模式？
 
-**答：**两步模式提供：
+**答**：两步模式提供：
 
 - **安全性**：报告由 DON 加密签名
 - **可验证性**：合约可以验证签名来自 CRE
@@ -86,7 +86,7 @@ const writeResult = evmClient
 
 ### 问：如果交易失败怎么办？
 
-**答：**请检查：
+**答**：请检查：
 
 1. 钱包中有足够的 ETH 支付 gas
 2. 合约地址正确
@@ -95,7 +95,7 @@ const writeResult = evmClient
 
 ### 问：如何调试 workflow 问题？
 
-**答：**多使用 `runtime.log()`：
+**答**：多使用 `runtime.log()`：
 
 ```typescript
 runtime.log(`[DEBUG] Value: ${JSON.stringify(data)}`);
@@ -105,7 +105,7 @@ runtime.log(`[DEBUG] Value: ${JSON.stringify(data)}`);
 
 ### 问：一个 workflow 里可以有多个 trigger 吗？
 
-**答：**可以！这正是今天要做的事。一个 workflow 最多可以有 10 个 trigger。
+**答**：可以！这正是今天要做的事。一个 workflow 最多可以有 10 个 trigger。
 
 ```typescript
 const initWorkflow = (config: Config) => {
