@@ -1,6 +1,11 @@
 # CRE Bootcamp: AI-Powered Prediction Markets
 
-A 2-day hands-on bootcamp for building with [**Chainlink Runtime Environment (CRE)**](https://docs.chain.link/cre).
+A hands-on bootcamp for building with [**Chainlink Runtime Environment (CRE)**](https://docs.chain.link/cre).
+
+It is also available in:
+- [Español](https://smartcontractkit.github.io/cre-bootcamp-2026/es/)
+- [Mandarin](https://smartcontractkit.github.io/cre-bootcamp-2026/cn/)
+- [Português](https://smartcontractkit.github.io/cre-bootcamp-2026/pt/)
 
 > **Disclaimer**: This tutorial represents an educational example to use a Chainlink system, product, or service and is provided to demonstrate how to interact with Chainlink's systems, products, and services to integrate them into your own. This template is provided "AS IS" and "AS AVAILABLE" without warranties of any kind, it has not been audited, and it may be missing key checks or error handling to make the usage of the system, product or service more clear. Do not use the code in this example in a production environment without completing your own audits and application of best practices. Neither Chainlink Labs, the Chainlink Foundation, nor Chainlink node operators are responsible for unintended outputs that are generated due to errors in code.
 
