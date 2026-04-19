@@ -134,7 +134,7 @@ import {
 
 // Inline types
 type Config = {
-  geminiModel: string;
+  deepseekModel: string;
   evms: Array<{
     marketAddress: string;
     chainSelectorName: string;
@@ -327,4 +327,4 @@ Workflow Simulation Result:
 
 ## 下一步
 
-接下来调用 Gemini AI 来判断市场结果！
+接下来调用 DeepSeek AI 来判断市场结果！

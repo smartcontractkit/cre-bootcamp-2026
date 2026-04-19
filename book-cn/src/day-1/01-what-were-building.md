@@ -8,7 +8,7 @@
 2. **用户在 Yes 或 No 上质押 ETH**进行预测
 3. **用户可以请求结算**任意市场
 4. **CRE 通过 Log Trigger 自动检测**结算请求
-5. **Google Gemini AI**判定市场结果
+5. **Deepseek AI**判定市场结果
 6. **CRE 将**已验证的结果**写回链上**
 7. **获胜者领取**总奖池中的份额 → `Your stake * (Total Pool / Winning Pool)`
 

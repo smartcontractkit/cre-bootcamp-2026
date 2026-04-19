@@ -52,7 +52,7 @@ const writeResult = evmClient
 
 1. **Log Trigger** — 响应链上事件
 2. **EVM Read** — 从智能合约读取状态
-3. **HTTP Capability** — 调用 Gemini AI
+3. **HTTP Capability** — 调用 Deepseek AI
 4. **Complete Flow** — 将所有部分串联起来
 
 ### 架构
@@ -68,7 +68,7 @@ const writeResult = evmClient
 │                                   │                             │
 │                    ┌──────────────┼───────────────────┐         │
 │                    ▼              ▼                   ▼         │
-│              EVM Read         Gemini AI           EVM Write     │
+│              EVM Read         Deepseek AI         EVM Write.    │
 │           (market data)   (determine outcome)  (settle market)  │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
