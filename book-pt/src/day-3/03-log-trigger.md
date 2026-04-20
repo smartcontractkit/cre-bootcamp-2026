@@ -1,6 +1,6 @@
 # Log Trigger no Prediction Market
 
-Quando a liquidação é solicitada em um Mercado, estamos usando o Log trigger para iniciar um workflow e obter a resposta do Gemini AI.
+Quando a liquidação é solicitada em um Mercado, Log trigger é utilizado para iniciar um workflow e obter a resposta do Gemini AI.
 
 ## O Evento: SettlementRequested
 
@@ -17,7 +17,7 @@ Queremos que o CRE:
 
 ## O Payload EVMLog para SettlementRequested 
 
-Para `SettlementRequested(uint256 indexed marketId, string question)`:
+Estas são as informações no Payload do evento `SettlementRequested(uint256 indexed marketId, string question)`:
 - `topics[0]` = Hash da assinatura do evento
 - `topics[1]` = `marketId` (indexado, então está nos topics)
 - `data` = `question` (não indexado)
@@ -50,41 +50,41 @@ const EVENT_ABI = parseAbi([
 ]);
 
 export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
-  // Converter topics para formato hex para o viem
+  // Convert topics to hex format for viem
   const topics = log.topics.map((t: Uint8Array) => bytesToHex(t)) as [
     `0x${string}`,
     ...`0x${string}`[]
   ];
   const data = bytesToHex(log.data);
 
-  // Decodificar o evento
+  // Decode the event
   const decodedLog = decodeEventLog({ abi: EVENT_ABI, data, topics });
 
-  // Extrair os valores
+  // Extract the values
   const marketId = decodedLog.args.marketId as bigint;
   const question = decodedLog.args.question as string;
 
   runtime.log(`Settlement requested for Market #${marketId}`);
   runtime.log(`Question: "${question}"`);
 
-  // Continuar com EVM Read, AI, EVM Write (próximos capítulos)...
+  // Continue with EVM Read, AI, EVM Write (next chapters)...
   return "Processed";
 }
 ```
 
 ## Atualizando main.ts
 
-Atualize `my-workflow/main.ts` para registrar o Log Trigger:
+Atualize `my-workflow/main.ts` para usar o Log Trigger:
 
 ```typescript
 // prediction-market/my-workflow/main.ts
 
-import { cre, Runner, getNetwork } from "@chainlink/cre-sdk";
+import { cre, Runner, getNetwork, hexToBase64 } from "@chainlink/cre-sdk";
 import { keccak256, toHex } from "viem";
 import { onHttpTrigger } from "./httpCallback";
 import { onLogTrigger } from "./logCallback";
 
-// Tipo Config (corresponde à estrutura do config.staging.json)
+// Config type (matches config.staging.json structure)
 type Config = {
   geminiModel: string;
   evms: Array<{
@@ -97,11 +97,11 @@ type Config = {
 const SETTLEMENT_REQUESTED_SIGNATURE = "SettlementRequested(uint256,string)";
 
 const initWorkflow = (config: Config) => {
-  // Inicializar capability HTTP
+  // Initialize HTTP capability
   const httpCapability = new cre.capabilities.HTTPCapability();
   const httpTrigger = httpCapability.trigger({});
 
-  // Obter rede para Log Trigger
+  // Get network for Log Trigger
   const network = getNetwork({
     chainFamily: "evm",
     chainSelectorName: config.evms[0].chainSelectorName,
@@ -117,14 +117,14 @@ const initWorkflow = (config: Config) => {
 
   
   return [
-    // Dia 2: HTTP Trigger - Criação de Mercado
+    // Day 1: HTTP Trigger - Market Creation
     cre.handler(httpTrigger, onHttpTrigger),
     
-    // Dia 3: Log Trigger - Liquidação Orientada a Eventos ← NOVO!
+    // Day 2: Log Trigger - Event-Driven Settlement ← NEW!
     cre.handler(
       evmClient.logTrigger({
-        addresses: [config.evms[0].marketAddress],
-        topics: [{ values: [eventHash] }],
+        addresses: [hexToBase64(config.evms[0].marketAddress as `0x${string}`)],
+        topics: [{ values: [hexToBase64(eventHash)] }],
         confidence: "CONFIDENCE_LEVEL_FINALIZED",
       }),
       onLogTrigger
@@ -142,7 +142,7 @@ main();
 
 ## Simulando um Log Trigger
 
-### 1. Primeiro, solicite a liquidação no seu contrato
+### 1. Primeiro, solicite a liquidação de um mercado no smart contract
 
 - Interaja com o `PredictionMarket.sol`
 - Chame a função `requestSettlement`, com o parâmetro `0`, que é o id da pergunta do mercado criada anteriormente.
@@ -161,7 +161,7 @@ cast send $MARKET_ADDRESS \
 
 **Salve o hash da transação!**
 
-O resultado em nosso contrato implantado:
+O resultado em nosso contrato publicado:
 
 ```bash
 blockHash            0x123ec1ae9e4e5fcfec18edd3e76aa99a4628904c2380a6d578e5471928e71e78
@@ -258,4 +258,4 @@ Workflow Simulation Result:
 
 ## Próximos Passos
 
-Agora vamos ler mais dados do contrato antes de liquidar.
+Agora vamos ler mais dados do contrato antes de executar a liquidação do mercado solicitado.

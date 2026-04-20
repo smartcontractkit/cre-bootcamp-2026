@@ -1,18 +1,20 @@
 # Sprint de Configuración del CRE CLI
 
-Antes de comenzar a construir, aseguremonos de que tu entorno CRE este configurado correctamente. Seguiremos las instrucciones oficiales de configuración de [cre.chain.link](https://cre.chain.link).
+Antes de comenzar a desarrollar, asegurémonos de que tu entorno CRE esté configurado correctamente. 
+
+Seguiremos las instrucciones oficiales de configuración de [cre.chain.link](https://cre.chain.link).
 
 ## Paso 1: Crear una Cuenta CRE
 
 1. Ve a [cre.chain.link](https://cre.chain.link)
-2. Crea una cuenta o inicia sesion
+2. Crea una cuenta o inicia sesión
 3. Accede al panel de la plataforma CRE
 
 ![CRE Signup](../assets/cre-signup.png)
 
 ## Paso 2: Instalar el CRE CLI
 
-El **CRE CLI** es esencial para compilar y simular flujos de trabajo. Compila tu código TypeScript en binarios WebAssembly (WASM) y te permite probar flujos de trabajo localmente antes del despliegue.
+El **CRE CLI** es esencial para compilar y simular workflows. Compila tu código TypeScript en binarios WebAssembly (WASM) y te permite probar workflows localmente antes del despliegue.
 
 ### Opción 1: Instalación Automática
 
@@ -43,19 +45,19 @@ Si prefieres instalar manualmente o la instalación automática no funciona en t
 cre version
 ```
 
-## Paso 3: Autenticarse con el CRE CLI
+## Paso 3: Iniciar sesión con CRE CLI
 
-Autentica tu CLI con tu cuenta CRE:
+Inicia sesión con CRE CLI:
 
 ```bash
 cre login
 ```
 
-Esto abrira una ventana del navegador para que te autentiques. Una vez autenticado, tu CLI estara listo para usar.
+Esto abrirá una ventana del navegador para que te autentiques. Una vez autenticado, CRE CLI estará listo para usar.
 
 ![CRE Successful Login](../assets/cre-successful-login.png)
 
-Verifica tu estado de inicio de sesion y los detalles de tu cuenta con:
+Verifica tu estado de sesión y los detalles de tu cuenta con:
 
 ```bash
 cre whoami
@@ -75,11 +77,11 @@ export PATH="$HOME/.cre/bin:$PATH"
 source ~/.zshrc  # o ~/.bashrc
 ```
 
-## Que Es Posible Ahora?
+## ¿Qué Es Posible Ahora?
 
 Ahora que tu entorno CRE está configurado, puedes:
 
 - **Crear nuevos proyectos CRE**: Comienza ejecutando el comando `cre init`
-- **Compilar flujos de trabajo**: El CRE CLI compila tu código TypeScript en binarios WASM
-- **Simular flujos de trabajo**: Prueba tus flujos de trabajo localmente con `cre workflow simulate`
-- **Desplegar flujos de trabajo**: Una vez listo, despliega en producción (Early Access)
+- **Compilar workflows**: El CRE CLI compila tu código TypeScript en binarios WASM
+- **Simular workflows**: Prueba tus workflows localmente con `cre workflow simulate`
+- **Desplegar workflows**: Una vez listo, despliega en producción (Early Access)

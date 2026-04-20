@@ -2,7 +2,7 @@
 
 Crearemos un nuevo proyecto Foundry para nuestro smart contract. 
 
-> Si estas usando una **computadora con Windows**, el Proyecto Foundry solo puede crearse usando **Git Bash**, no en `Command Prompt` o `Powershell`.
+> Si estás usando una **computadora con Windows**, el Proyecto Foundry solo puede crearse usando **Git Bash**, no en `Command Prompt` o `Powershell`.
 
 Ve al directorio `prediction-market`:
 
@@ -59,7 +59,7 @@ interface IReceiver is IERC165 {
 
 **Crear `src/interfaces/ReceiverTemplate.sol`:**
 
-El `ReceiverTemplate` proporciona validación de la dirección del forwarder, validación opcional del workflow, soporte ERC165 y utilidades de decodificación de metadata. Copia la implementacion completa:
+El `ReceiverTemplate` proporciona validación de la dirección del forwarder, validación opcional del workflow, soporte ERC165 y utilidades de decodificación de metadata. Copia la implementación completa:
 
 ```solidity
 // SPDX-License-Identifier: MIT

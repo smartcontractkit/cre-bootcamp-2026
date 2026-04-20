@@ -1,6 +1,6 @@
 # Conceptos de HTTP Capability
 
-La **HTTP Capability** (`HTTPClient`) permite que tu flujo de trabajo obtenga datos de cualquier API externa. Todas las solicitudes HTTP se envuelven en un mecanismo de consenso para proporcionar un resultado unico y confiable a través de multiples nodos del DON.
+La **HTTP Capability** (`HTTPClient`) permite que tu workflow obtenga datos de cualquier API externa. Todas las solicitudes HTTP se envuelven en un mecanismo de consenso para proporcionar un resultado único y confiable a través de múltiples nodos del DON.
 
 ## Entendiendo el cliente HTTP
 
@@ -19,13 +19,13 @@ const result = httpClient
   .result();
 ```
 
-## Opciones de agregación por consenso
+## Consenso: opciones de agregación
 
 **Funciones de agregación integradas:**
 
 | Método | Descripción | Tipos Soportados |
 |--------|-------------|------------------|
-| `consensusIdenticalAggregation<T>()` | Todos los nodos deben devolver resultados identicos | Primitivos, objetos |
+| `consensusIdenticalAggregation<T>()` | Todos los nodos deben devolver resultados idénticos | Primitivos, objetos |
 | `consensusMedianAggregation<T>()` | Calcula la mediana entre nodos | `number`, `bigint`, `Date` |
 | `consensusCommonPrefixAggregation<T>()` | Prefijo común más largo de arrays | `string[]`, `number[]` |
 | `consensusCommonSuffixAggregation<T>()` | Sufijo común más largo de arrays | `string[]`, `number[]` |
@@ -35,7 +35,7 @@ const result = httpClient
 | Función | Descripción | Tipos Compatibles |
 |---------|-------------|-------------------|
 | `median` | Calcula la mediana | `number`, `bigint`, `Date` |
-| `identical` | Debe ser identico entre nodos | Primitivos, objetos |
+| `identical` | Debe ser idéntico entre nodos | Primitivos, objetos |
 | `commonPrefix` | Prefijo común más largo | Arrays |
 | `commonSuffix` | Sufijo común más largo | Arrays |
 | `ignore` | Ignorado durante el consenso | Cualquiera |
@@ -62,7 +62,7 @@ const req = {
 
 ## Entendiendo la configuración de cache
 
-Por defecto, **todos los nodos en el DON ejecutan solicitudes HTTP**. Para solicitudes POST, esto causaria llamadas API duplicadas.
+Por defecto, **todos los nodos en el DON ejecutan solicitudes HTTP**. Para solicitudes POST, esto causaría llamadas API duplicadas.
 
 La solución es `cacheSettings`:
 
@@ -73,7 +73,7 @@ cacheSettings: {
 }
 ```
 
-**Como funciona:**
+**Cómo funciona:**
 
 ```
 +-----------------------------------------------------------------+
@@ -94,16 +94,16 @@ cacheSettings: {
 
 **Resultado**: Solo se hace **una** llamada HTTP real, mientras todos los nodos participan en el consenso.
 
-> **Buena Practica**: Usa `cacheSettings` para todas las solicitudes POST, PUT, PATCH y DELETE para prevenir duplicados.
+> **Buena Práctica**: Usa `cacheSettings` para todas las solicitudes POST, PUT, PATCH y DELETE para prevenir llamadas duplicadas.
 
 ## Secrets
 
-Los secrets son credenciales gestionadas de forma segura (claves API, tokens, etc.) disponibles para tu flujo de trabajo en tiempo de ejecución. En CRE:
+Los secrets son credenciales gestionadas de forma segura (claves API, tokens, etc.) disponibles para tu workflow en tiempo de ejecución. En CRE:
 
 - **En simulación**: Los secrets se mapean en `secrets.yaml` a variables de entorno de tu archivo `.env`
 - **En producción**: Los secrets se almacenan en el **Vault DON** descentralizado
 
-Para obtener un secret en tu flujo de trabajo:
+Para obtener un secret en tu workflow:
 
 ```typescript
 const secret = runtime.getSecret({ id: "MY_SECRET_NAME" }).result();

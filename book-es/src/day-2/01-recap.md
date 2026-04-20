@@ -1,6 +1,7 @@
 # Repaso y Preguntas
 
-Bienvenidos de vuelta al Día 2! Repasemos lo que aprendimos ayer y respondamos cualquier pregunta.
+Bienvenidos de vuelta! Repasemos lo que aprendimos ayer y respondamos cualquier pregunta.
+
 
 ## Repaso del Día 1
 
@@ -16,12 +17,12 @@ Bienvenidos de vuelta al Día 2! Repasemos lo que aprendimos ayer y respondamos 
 
 ## Agenda de Hoy
 
-Hoy completaremos el mercado de predicción con:
+Hoy vamos a empezar el mercado de predicción con:
 
 1. **PredictionMarket.sol** - Creando el smart contract
 2. **HTTP Trigger** - Recibiendo solicitudes HTTP externas
 3. **Capacidad EVM Write** - El patrón de dos pasos (report -> writeReport)
-4. **Flujo de Creación de Mercados** - Creando una pregunta de mercado de predicción
+4. **Flujo de Creación de Mercados** - Creando una pregunta en el mercado de predicción
 
 
 ### Arquitectura
@@ -39,7 +40,7 @@ Hoy completaremos el mercado de predicción con:
 
 ## Verificación Rápida del Entorno
 
-Antes de continuar, verifiquemos que todo este configurado:
+Antes de continuar, vamos a verificar se todo esté configurado:
 
 ```bash
 # Verificar autenticación CRE

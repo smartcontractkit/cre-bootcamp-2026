@@ -1,6 +1,8 @@
 # Sprint de Configuração do CRE CLI
 
-Antes de começarmos a construir, vamos garantir que seu ambiente CRE esteja configurado corretamente. Seguiremos as instruções oficiais de configuração em [cre.chain.link](https://cre.chain.link).
+Antes de começarmos a desenvolver, vamos garantir que seu ambiente CRE esteja configurado corretamente. 
+
+Seguiremos as instruções oficiais de configuração em [cre.chain.link](https://cre.chain.link).
 
 ## Passo 1: Criar uma Conta CRE
 
@@ -43,19 +45,47 @@ Se você preferir instalar manualmente ou a instalação automática não funcio
 cre version
 ```
 
-## Passo 3: Autenticar com o CRE CLI
+### CRE Update no Windows
 
-Autentique seu CLI com sua conta CRE:
+Quando houver uma atualização de versão do CRE, você verá esta mensagem:
+
+```
+⚠️  Update available! You’re running 1.10.0, but 1.11.0 is the latest.
+Run `cre update` or visit https://github.com/smartcontractkit/cre-cli/releases to upgrade.
+```
+
+Mas ao executar `cre update`, o processo de update não acontecerá automaticamente
+
+```
+! Automatic replacement not supported on Windows
+  Please close all running cre processes and manually replace the binary at:
+C:\Users\YourUser\AppData\Local\Programs\cre\cre.exe
+  New binary downloaded at:
+C:\Users\YourUser\AppData\Local\Temp\cre_update_1774644814\cre_v1.11.0_windows_amd64.exe
+✗ failed to replace binary: automatic replacement not supported on Windows
+```
+
+Provavelmente você não encontrará o arquivo executável em `C:\Users\YourUser\AppData\Local\Temp\cre_update_...`, 
+ele será excluído devido ao erro.
+
+Vá ao github e faça download do `cre_windows_amd64.zip`
+1- Descompacte o arquivo
+2- Renomeie o executavel para cre.exe
+3- Copie, sobreescrevendo, no local onde está cre.exe, por exemplo: `C:\Users\YourUser\AppData\Local\Programs\cre\`
+
+## Passo 3: Fazer login com o CRE CLI
+
+Faça login no CRE CLI:
 
 ```bash
 cre login
 ```
 
-Isso abrirá uma janela do navegador para você se autenticar. Uma vez autenticado, seu CLI está pronto para uso.
+Isso abrirá uma janela do navegador para você se autenticar. Uma vez autenticado, CRE CLI está pronto para uso.
 
 ![CRE Successful Login](../assets/cre-successful-login.png)
 
-Verifique seu status de login e detalhes da conta com:
+Verifique o status do login e detalhes da conta com:
 
 ```bash
 cre whoami

@@ -1,6 +1,6 @@
 # Log Trigger en Prediction Market
 
-Cuando se solicita la liquidación de un Mercado, usamos el Log trigger para iniciar un flujo de trabajo y obtener la respuesta de Gemini AI.
+Cuando se solicita la liquidación de un Mercado, se utiliza Log trigger para iniciar un workflow y obtener la respuesta de Gemini AI.
 
 ## El Evento: SettlementRequested
 
@@ -13,11 +13,11 @@ event SettlementRequested(uint256 indexed marketId, string question);
 Queremos que CRE:
 1. **Detecte** cuando este evento se emite
 2. **Decodifique** el marketId y la pregunta
-3. **Ejecute** nuestro flujo de trabajo de liquidación
+3. **Ejecute** nuestro workflow de liquidación
 
 ## El Payload EVMLog para SettlementRequested 
 
-Para `SettlementRequested(uint256 indexed marketId, string question)`:
+Estas son las informaciones en el Payload del evento `SettlementRequested(uint256 indexed marketId, string question)`:
 - `topics[0]` = Hash de la firma del evento
 - `topics[1]` = `marketId` (indexado, así que está en topics)
 - `data` = `question` (no indexado)
@@ -74,12 +74,12 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
 
 ## Actualizando main.ts
 
-Actualiza `my-workflow/main.ts` para registrar el Log Trigger:
+Actualiza `my-workflow/main.ts` para usar el Log Trigger:
 
 ```typescript
 // prediction-market/my-workflow/main.ts
 
-import { cre, Runner, getNetwork } from "@chainlink/cre-sdk";
+import { cre, Runner, getNetwork, hexToBase64 } from "@chainlink/cre-sdk";
 import { keccak256, toHex } from "viem";
 import { onHttpTrigger } from "./httpCallback";
 import { onLogTrigger } from "./logCallback";
@@ -117,14 +117,14 @@ const initWorkflow = (config: Config) => {
 
   
   return [
-    // Day 2: HTTP Trigger - Market Creation
+    // Day 1: HTTP Trigger - Market Creation
     cre.handler(httpTrigger, onHttpTrigger),
     
-    // Day 3: Log Trigger - Event-Driven Settlement ← NEW!
+    // Day 2: Log Trigger - Event-Driven Settlement ← NEW!
     cre.handler(
       evmClient.logTrigger({
-        addresses: [config.evms[0].marketAddress],
-        topics: [{ values: [eventHash] }],
+        addresses: [hexToBase64(config.evms[0].marketAddress as `0x${string}`)],
+        topics: [{ values: [hexToBase64(eventHash)] }],
         confidence: "CONFIDENCE_LEVEL_FINALIZED",
       }),
       onLogTrigger
@@ -142,10 +142,10 @@ main();
 
 ## Simulando un Log Trigger
 
-### 1. Primero, solicita la liquidación en tu contrato
+### 1. Primero, solicita la liquidación de un mercado en el smart contract
 
-- Interactua con el `PredictionMarket.sol`
-- Llama a la función `requestSettlement`, con el parametro `0`, que es el id de la pregunta del mercado creada antes.
+- Interactúa con el `PredictionMarket.sol`
+- Llama a la función `requestSettlement`, con el parámetro `0`, que es el id de la pregunta del mercado creada antes.
 
 > En una computadora con Windows, usa `Git Bash` para ejecutar el comando a continuación.
 
@@ -219,11 +219,11 @@ Continua con el hash de la transacción para el evento EVM log:
 
 Pega el hash de la transacción del Paso 1.
 
-### 5. Ingresar el indice del evento
+### 5. Ingresar el índice del evento
 
-Ingresa el indice del evento (basado en 0).
+Ingresa el índice del evento (basado en 0).
 
-Verificando los Logs de la transacción en el block explorer, puedes ver que el evento `SettlementRequested` es el primero, que es el indice `0`.
+Verificando los Logs de la transacción en el block explorer, puedes ver que el evento `SettlementRequested` es el primero, que es el índice `0`.
 
 Mira el ejemplo:
 [SettlementRequested Log](https://sepolia.etherscan.io/tx/0x152352a8c56b67300423227010b2993d3e44c10d95d958796e0b5c8572c4700b#eventlog)
@@ -251,11 +251,11 @@ Workflow Simulation Result:
 
 ## Puntos Clave
 
-- Los **Log Triggers** reacciónan a eventos on-chain automaticamente
+- Los **Log Triggers** reaccionan a eventos on-chain automáticamente
 - Usa `keccak256(toHex("EventName(types)"))` para calcular el hash del evento
 - Decodifica eventos usando `decodeEventLog` de Viem
 - Prueba primero activando el evento on-chain, luego simulando con el hash de la transacción
 
 ## Siguientes Pasos
 
-Ahora leamos más datos del contrato antes de liquidar.
+Ahora vamos a leer más datos del contrato antes de ejecutar la liquidación de mercado solicitada.

@@ -94,7 +94,7 @@ bun install v1.3.12 (700fc117)
 
 ## Paso 3: Configurar Variables de Entorno
 
-El comando `cre init` crea un archivo `.env` en la raiz del proyecto. Este archivo sera usado tanto por los flujos de trabajo CRE como por Foundry (para el despliegue de smart contracts). Vamos a configurarlo.
+El comando `cre init` crea un archivo `.env` en la raíz del proyecto. Este archivo será usado tanto por los workflows CRE como por Foundry (para el despliegue de smart contracts). Vamos a configurarlo.
 
 - Abre el archivo `.env`
 - Borra el contenido
@@ -121,7 +121,7 @@ GEMINI_API_KEY_VAR=YOUR_GEMINI_API_KEY_HERE
 
 Reemplaza los valores de ejemplo:
 - `YOUR_PRIVATE_KEY_HERE`: Tu clave privada de Ethereum (con prefijo `0x`)
-- `YOUR_GEMINI_API_KEY_HERE`: Tu clave API de Google Gemini (obten una desde [Google AI Studio](https://aistudio.google.com/app/apikey))
+- `YOUR_GEMINI_API_KEY_HERE`: Tu clave API de Google Gemini (obtén una desde [Google AI Studio](https://aistudio.google.com/app/apikey))
 
 **Nota sobre la clave API de Gemini**
 

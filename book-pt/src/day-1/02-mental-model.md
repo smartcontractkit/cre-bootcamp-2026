@@ -1,10 +1,12 @@
 # O Modelo Mental do CRE
 
-Antes de começarmos a programar, vamos construir um modelo mental sólido do que é o CRE e como ele funciona.
+Antes de começarmos a programar, vamos construir um modelo mental do que é o CRE e como ele funciona.
 
 ## O Que é o CRE?
 
-O **Chainlink Runtime Environment (CRE)** é uma camada de orquestração que permite escrever smart contracts de nível institucional e executar seus próprios workflows em TypeScript ou Golang, alimentados por redes de oráculos descentralizados da Chainlink (DONs). Com o CRE, você pode compor diferentes capabilities (ex.: HTTP, leituras e escritas on-chain, assinatura, consenso) em workflows verificáveis que conectam smart contracts a APIs, serviços em nuvem, sistemas de IA, outras blockchains e mais. Os workflows então executam através de DONs com consenso integrado, servindo como um runtime seguro, à prova de adulteração e altamente disponível.
+O **Chainlink Runtime Environment (CRE)** é uma camada de orquestração que permite escrever smart contracts de nível institucional e executar seus próprios workflows em TypeScript ou Golang, alimentados por redes de oráculos descentralizados da Chainlink (DONs). 
+
+Com o CRE, você pode compor diferentes capabilities (ex.: HTTP, leituras e escritas on-chain, assinatura, consenso) em workflows verificáveis que conectam smart contracts a APIs, serviços em nuvem, sistemas de IA, outras blockchains e mais. Os workflows são executados através de DONs com consenso integrado, servindo como um runtime seguro, à prova de adulteração e altamente disponível.
 
 ### O Problema Que o CRE Resolve
 
@@ -31,7 +33,7 @@ Tudo com **consenso criptográfico** garantindo que cada operação é verificad
 Um **Workflow** é o código offchain que você desenvolve, escrito em TypeScript ou Go. O CRE compila para WebAssembly (WASM) e o executa através de uma Rede de Oráculos Descentralizada (DON).
 
 ```typescript
-// Um workflow é apenas código TypeScript ou Go!
+// Um workflow é apenas código em TypeScript ou Go!
 const initWorkflow = (config: Config) => {
   return [
     cre.handler(trigger, callback),
@@ -47,7 +49,7 @@ const initWorkflow = (config: Config) => {
 |---------|----------------|-------------|
 | **CRON** | Em um agendamento | "Executar workflow a cada hora" |
 | **HTTP** | Ao receber uma requisição HTTP | "Criar mercado quando a API for chamada" |
-| **Log** | Quando um smart contract emite um evento | "Liquidar quando SettlementRequested disparar" |
+| **Log** | Quando um smart contract emite um evento | "Liquidar quando SettlementRequested for acionado" |
 
 ### 3. Capabilities
 
@@ -71,7 +73,7 @@ Uma **DON** é uma rede de nós independentes que:
 
 ## O Padrão Trigger-e-Callback
 
-Este é o padrão arquitetural central que você usará em todo workflow CRE:
+Esta é a pnricipal arquitetura padrão / standard que você usará em todo workflow CRE:
 
 ```typescript
 cre.handler(
@@ -83,11 +85,11 @@ cre.handler(
 ### Exemplo: Um Workflow Cron Simples
 
 ```typescript
-// O trigger: a cada 10 minutos
+// Trigger: a cada 10 minutos
 const cronCapability = new cre.capabilities.CronCapability()
 const cronTrigger = cronCapability.trigger({ schedule: "0 */10 * * * *" })
 
-// O callback: o que executa quando acionado
+// Callback: o que executa quando acionado
 function onCronTrigger(runtime: Runtime<Config>): string {
   runtime.log("Olá do CRE!")
   return "Sucesso"
@@ -133,7 +135,7 @@ Quando um trigger dispara, aqui está o que acontece:
 8. Callback continua com dados confiáveis
 ```
 
-## Principais Conclusões
+## Conceitos Principais
 
 | Conceito | Resumo |
 |----------|--------|

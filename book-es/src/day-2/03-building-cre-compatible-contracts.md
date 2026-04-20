@@ -1,6 +1,6 @@
 # Construyendo Contratos Compatibles con CRE
 
-Para que un smart contract reciba datos de CRE, debe implementar la interfaz `IReceiver`. Esta interfaz define una unica función `onReport()` que el contrato `KeystoneForwarder` de Chainlink llama para entregar datos verificados.
+Para que un smart contract reciba datos de CRE, debe implementar la interfaz `IReceiver`. Esta interfaz define una única función `onReport()` que el contrato `KeystoneForwarder` de Chainlink llama para entregar datos verificados.
 
 Echa un vistazo a la interfaz `IReceiver`:
 
@@ -28,9 +28,9 @@ Para simulaciones en la red Ethereum Sepolia, usaremos un smart contract mock, l
 
 > El contrato `MockKeystoneForwarder` en Ethereum Sepolia se encuentra en: [https://sepolia.etherscan.io/address/0x15fc6ae953e024d975e77382eeec56a9101f9f88#code](https://sepolia.etherscan.io/address/0x15fc6ae953e024d975e77382eeec56a9101f9f88#code)
 
-Asi es como CRE entrega datos a tu contrato:
+Así es como CRE entrega datos a tu contrato:
 
-1. **CRE no llama a tu contrato directamente** - envia un reporte firmado al contrato `KeystoneForwarder` de Chainlink
+1. **CRE no llama a tu contrato directamente** - envía un reporte firmado al contrato `KeystoneForwarder` de Chainlink
 2. **El forwarder valida las firmas** - asegurando que el reporte proviene de un DON confiable
 3. **El forwarder llama a `onReport()`** - entregando los datos verificados a tu contrato
 4. **Tu decodificas y procesas** - extraes los datos de los bytes del reporte

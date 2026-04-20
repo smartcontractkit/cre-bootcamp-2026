@@ -60,9 +60,10 @@ Market question:
 
 ## Passo 1: Configurar a chave de API do Gemini
 
-Primeiro, certifique-se de que sua chave de API do Gemini está configurada.
+Primeiro, certifique-se de que sua chave de API do Gemini está configurada em `.env`.
 
-**secrets.yaml:**
+Atualize o arquivo **secrets.yaml:**:
+
 ```yaml
 secretsNames:
     GEMINI_API_KEY:          # Use este nome nos workflows para acessar o secret
@@ -105,7 +106,7 @@ import {
   type HTTPSendRequester,
 } from "@chainlink/cre-sdk";
 
-// Tipos inline
+// Inline types
 type Config = {
   geminiModel: string;
   evms: Array<{
@@ -256,7 +257,7 @@ const buildGeminiRequest =
 
 ### Gemini API error: 429
 
-Se você estiver vendo o seguinte erro:
+Se este erro acontecer:
 
 ```bash
 [USER LOG] [ERROR] Error failed to execute capability: [2]Unknown: Gemini API error: 429 - {
@@ -265,7 +266,7 @@ Se você estiver vendo o seguinte erro:
     "message": "You exceeded your current quota, please check your plan and billing details.
 ```
 
-Certifique-se de configurar o faturamento para sua chave de API do Gemini no painel do [Google AI Studio](https://aistudio.google.com/app/apikey). Você precisará conectar seu cartão de crédito para ativar o faturamento, mas não se preocupe — o nível gratuito é mais que suficiente para completar este bootcamp.
+Certifique-se de configurar o faturamento para sua chave de API do Gemini no painel do [Google AI Studio](https://aistudio.google.com/app/apikey). Você precisará conectar seu cartão de crédito para ativar o faturamento, mas não se preocupe — o nível gratuito é mais do que suficiente para completar este bootcamp.
 
 ![gemini-billing](../assets/gemini-billing.png)
 

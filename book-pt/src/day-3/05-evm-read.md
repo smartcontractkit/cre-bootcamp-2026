@@ -2,7 +2,7 @@
 
 ## Lendo Dados do Mercado
 
-Para ler os Dados do Mercado, nosso contrato tem uma função `getMarket`:
+Para ler os Dados do Mercado, nosso contrato tem a função `getMarket`:
 
 ```solidity
 function getMarket(uint256 marketId) external view returns (Market memory);
@@ -11,6 +11,8 @@ function getMarket(uint256 marketId) external view returns (Market memory);
 Vamos chamá-la a partir do CRE.
 
 ### Passo 1: Definir a ABI
+
+Esta é a ABI da função `getMarket`, que será utilizada no próximo passo:
 
 ```typescript
 const GET_MARKET_ABI = [
@@ -42,7 +44,9 @@ const GET_MARKET_ABI = [
 
 ### Passo 2: Atualizar o arquivo `logCallback.ts`
 
-Agora vamos atualizar `my-workflow/logCallback.ts` para adicionar a funcionalidade EVM Read:
+Vamos atualizar `my-workflow/logCallback.ts` para adicionar a funcionalidade EVM Read.
+
+Sobreescreva a versão anterior com o código abaixo:
 
 ```typescript
 // prediction-market/my-workflow/logCallback.ts
@@ -63,7 +67,7 @@ import {
   zeroAddress,
 } from "viem";
 
-// Tipos inline
+// Inline types
 type Config = {
   geminiModel: string;
   evms: Array<{
@@ -74,9 +78,9 @@ type Config = {
 };
 
 interface Market {
-  creator: string;
-  createdAt: bigint;
-  settledAt: bigint;
+  creator: `0x${string}`;
+  createdAt: number;
+  settledAt: number;
   settled: boolean;
   confidence: number;
   outcome: number;
@@ -116,7 +120,7 @@ const GET_MARKET_ABI = [
 ] as const;
 
 export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
-  // Passo 1: Decodificar o evento
+  // Step 1: Decode the event
   const topics = log.topics.map((t: Uint8Array) => bytesToHex(t)) as [
     `0x${string}`,
     ...`0x${string}`[]
@@ -130,7 +134,7 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
   runtime.log(`Settlement requested for Market #${marketId}`);
   runtime.log(`Question: "${question}"`);
 
-  // Passo 2: Ler detalhes do mercado (EVM Read)
+  // Step 2: Read market details (EVM Read)
   const evmConfig = runtime.config.evms[0];
   const network = getNetwork({
     chainFamily: "evm",
@@ -154,7 +158,7 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
     .callContract(runtime, {
       call: encodeCallMsg({
         from: zeroAddress,
-        to: evmConfig.marketAddress,
+        to: evmConfig.marketAddress as `0x${string}`,
         data: callData,
       }),
     })
@@ -175,8 +179,8 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
     return "Market already settled";
   }
 
-  // Passo 3: Continuar para IA (próximo capítulo)...
-  // Passo 4: Escrever liquidação (próximo capítulo)...
+  // Step 3: Continue to AI (next chapter)...
+  // Step 4: Write settlement (next chapter)...
 
   return "Success";
 }
@@ -184,12 +188,11 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
 
 ## Simulando um EVM Read via Log Trigger
 
-Agora vamos executar a simulação CRE novamente
+Execute a simulação CRE novamente, a partir do diretório prediction-market
 
 ### 1. Executar a simulação
 
 ```bash
-# A partir do diretório prediction-market
 cre workflow simulate my-workflow
 ```
 
@@ -238,9 +241,10 @@ Workflow Simulation Result:
 [SIMULATION] Execution finished signal received
 ```
 
-### Consenso nas Leituras
+### Consenso em EVM Read
 
-Mesmo operações de leitura executam em múltiplos nós da DON:
+Mesmo operações de leitura são executadas em múltiplos nós da DON:
+
 1. Cada nó lê os dados
 2. Resultados são comparados
 3. Consenso BFT é alcançado
@@ -254,6 +258,6 @@ Você aprendeu:
 - ✅ Como decodificar os resultados
 - ✅ Leitura com verificação por consenso
 
-## Próximos Passos
+## Próximos Passo
 
 Agora vamos chamar o Gemini AI para determinar o resultado do mercado!

@@ -6,3 +6,16 @@ O objetivo é arquitetar cada workflow e suas regras de negócio, visualizando o
 
 [Scaffold CRE](https://scaffold-cre.vercel.app/)
 
+
+## 🎉 Dia 1 Completo!
+
+Com sucesso, hoje você:
+- ✅ Entendeu como o CRE funciona
+- ✅ Configurou um projeto CRE
+- ✅ Planejou um projeto usando ScaffoldCRE
+
+Amanhã vamos:
+- Configurar o projeto CRE para Mercados de Previsão
+- Desenvolver smart contracts
+- Construir um workflow acionado por HTTP
+- Escrever dados em blockchain

@@ -6,12 +6,12 @@ Ahora la parte emocionante - integrar IA para determinar los resultados de los m
 
 Ahora apliquemos los conceptos de HTTP capability para construir nuestra integración con IA.
 
-### Vision General de la API de Gemini
+### Visión General de la API de Gemini
 
 Usaremos la API de Google Gemini:
 - Endpoint: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`
 - Autenticación: Clave API en el header
-- Caracteristica: Google Search grounding para respuestas factuales
+- Característica: Google Search grounding para respuestas factuales
 
 > El objetivo es recibir una respuesta "YES" | "NO" a la pregunta del mercado.
 
@@ -60,9 +60,10 @@ Market question:
 
 ## Paso 1: Configurar la clave API de Gemini
 
-Primero, asegurate de que tu clave API de Gemini este configurada.
+Primero, asegúrate de que tu clave API de Gemini esté configurada en `.env`.
 
-**secrets.yaml:**
+Actualiza el archivo **secrets.yaml:**: 
+
 ```yaml
 secretsNames:
     GEMINI_API_KEY:          # Use this name in workflows to access the secret
@@ -280,4 +281,4 @@ Has aprendido:
 
 ## Siguientes Pasos
 
-Ahora conectemos todo en el flujo de trabajo completo de liquidación!
+Ahora conectemos todo en el workflow completo de liquidación!

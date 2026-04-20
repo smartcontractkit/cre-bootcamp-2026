@@ -1,6 +1,6 @@
 ## Estructura del Proyecto con Smart Contracts
 
-La estructura completa del proyecto ahora incluye tanto el flujo de trabajo CRE como los contratos Foundry:
+La estructura completa del proyecto ahora incluye tanto el workflow CRE como los contratos Foundry:
 
 ```bash
 prediction-market/
@@ -12,7 +12,7 @@ prediction-market/
 │   ├── config.staging.json   # Configuración para simulación
 │   ├── package.json          # Dependencias de Node.js
 │   └── tsconfig.json         # Configuración de TypeScript
-└── contracts/                # Proyecto Foundry (recien creado)
+└── contracts/                # Proyecto Foundry (recién creado)
     ├── foundry.toml          # Configuración de Foundry
     ├── script/               # Scripts de despliegue (no los usaremos)
     ├── src/
@@ -29,12 +29,12 @@ prediction-market/
 forge build
 ```
 
-Deberias ver:
+Deberías ver:
 ```bash
 Compiler run successful!
 ```
 
-Quizas puedas notar algunas `notes` o `warnings` después del mensaje `Compiler run successful!`, ignoralos.
+Quizás puedas notar algunas `notes` o `warnings` después del mensaje `Compiler run successful!`, ignóralos.
 
 
 ## Desplegando el Contrato
@@ -69,7 +69,7 @@ Deployed to: 0x...   <-- Guarda esta dirección!
 Transaction hash: 0x...
 ```
 
-## Despues del Despliegue
+## Después del Despliegue
 
 **Guarda la dirección del contrato!** 
 
@@ -109,7 +109,7 @@ Actualiza **marketAddress** con la dirección de `PredictionMarket.sol` desplega
 
 Configuramos `gasLimit` en `500000` para este ejemplo porque es suficiente, pero otros casos de uso pueden consumir más gas.
 
-> **Nota**: Crearemos mercados a través del flujo de trabajo HTTP trigger en los próximos capitulos. Por ahora, solo necesitas el contrato desplegado!
+> **Nota**: Crearemos mercados a través del workflow HTTP trigger en los próximos capítulos. Por ahora, solo necesitas el contrato desplegado!
 
 ## Resumen
 

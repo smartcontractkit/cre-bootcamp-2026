@@ -4,7 +4,7 @@
 
 - [Instruções de Configuração](setup/setup-instructions.md)
 
-# 🎬 Preparação
+# 🎬 Setup
 
 - [Bem-vindo ao CRE Bootcamp](setup/welcome.md)
 - [Mantenha-se Sempre Conectado](setup/stay-connected.md)
