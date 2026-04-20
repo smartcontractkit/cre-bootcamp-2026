@@ -28,6 +28,6 @@
 - [回顾与答疑](day-3/01-recap.md)
 - [Log 触发器：事件驱动的工作流](day-3/02-log-trigger.md)
 - [EVM Read：读取合约状态](day-3/03-evm-read.md)
-- [AI 集成：Gemini HTTP 请求](day-3/04-ai-integration.md)
+- [AI 集成：Deepseek HTTP 请求](day-3/04-ai-integration.md)
 - [完整工作流：串联所有组件](day-3/05-complete-workflow.md)
 - [总结：端到端流程与后续规划](day-3/06-wrap-up.md)

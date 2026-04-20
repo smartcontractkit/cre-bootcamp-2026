@@ -683,7 +683,8 @@ Transaction hash: 0x...
 
 ## 部署之后
 
-**保存你的合约地址！**更新 CRE workflow 配置：
+**保存你的合约地址！**
+更新 CRE workflow 配置：
 
 ```bash
 cd ../my-workflow
@@ -693,7 +694,7 @@ cd ../my-workflow
 
 ```json
 {
-  "geminiModel": "gemini-2.0-flash",
+  "deepseekModel": "deepseek-chat",
   "evms": [
     {
       "marketAddress": "0xYOUR_CONTRACT_ADDRESS_HERE",

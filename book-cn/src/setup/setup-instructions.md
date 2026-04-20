@@ -22,7 +22,7 @@ https://smartcontractkit.github.io/cre-bootcamp-2026/cn/
 - **Foundry** - [安装说明](https://book.getfoundry.sh/getting-started/installation)
 - **将 Ethereum Sepolia 网络添加到你的钱包** - [在此添加](https://chainlist.org/chain/11155111)
 - **从水龙头获取 Sepolia ETH** - [Chainlink Faucet](https://faucets.chain.link/sepolia)
-- **Deepseek LLM API 密钥** - [从 Google AI Studio 获取](https://platform.deepseek.com/)
+- **Deepseek LLM API 密钥** - [从 Deepseek platform 获取](https://platform.deepseek.com/)
 
 ### 建议安装
 

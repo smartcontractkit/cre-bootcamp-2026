@@ -107,7 +107,7 @@ import {
 import { decodeEventLog, parseAbi } from "viem";
 
 type Config = {
-  geminiModel: string;
+  deepseekModel: string;
   evms: Array<{
     marketAddress: string;
     chainSelectorName: string;
@@ -149,14 +149,14 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
 ```typescript
 // prediction-market/my-workflow/main.ts
 
-import { cre, Runner, getNetwork } from "@chainlink/cre-sdk";
+import { cre, Runner, getNetwork, logTriggerConfig } from "@chainlink/cre-sdk";
 import { keccak256, toHex } from "viem";
 import { onHttpTrigger } from "./httpCallback";
 import { onLogTrigger } from "./logCallback";
 
 // Config type (matches config.staging.json structure)
 type Config = {
-  geminiModel: string;
+  deepseekModel: string;
   evms: Array<{
     marketAddress: string;
     chainSelectorName: string;
@@ -191,11 +191,13 @@ const initWorkflow = (config: Config) => {
     
     // Day 2: Log Trigger - Event-Driven Settlement ← NEW!
     cre.handler(
-      evmClient.logTrigger({
-        addresses: [config.evms[0].marketAddress],
-        topics: [{ values: [eventHash] }],
-        confidence: "CONFIDENCE_LEVEL_FINALIZED",
-      }),
+      evmClient.logTrigger(
+        logTriggerConfig({
+          addresses: [config.evms[0].marketAddress as `0x${string}`],
+          topics: [[eventHash]],
+          confidence: "FINALIZED",
+        })
+      ),
       onLogTrigger
     ),
   ];

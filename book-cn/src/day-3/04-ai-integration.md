@@ -1,4 +1,4 @@
-# AI 集成：Gemini HTTP 请求
+# AI 集成：Deepseek HTTP 请求
 
 现在进入激动人心的部分——集成 AI 来判断预测市场的结果！
 

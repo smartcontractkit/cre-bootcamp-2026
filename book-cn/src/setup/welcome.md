@@ -38,6 +38,6 @@ LinkedIn: [Frank Kong](https://www.linkedin.com/in/frank-kong-0a927785/)
 将一个完整的 AI 驱动结算系统串联起来：
 - 用于事件驱动工作流的 Log Trigger
 - EVM Read Capability
-- 与 Google Gemini 的 AI 集成
+- 与 Deepseek 的 AI 集成
 - 端到端结算流程
 - ❓ 答疑 - 开放提问环节

@@ -25,7 +25,7 @@ SettlementRequested Event
          ▼
 ┌────────────────────┐
 │ Step 3: HTTP       │
-│ Query Gemini AI    │
+│ Query DeepSeek AI  │
 └────────┬───────────┘
          │
          ▼
@@ -408,11 +408,9 @@ Enter event index (0-based): 0
 [USER LOG] [Step 2] Already settled: false
 [USER LOG] [Step 2] Yes Pool: 10000000000000000
 [USER LOG] [Step 2] No Pool: 0
-[USER LOG] [Step 3] Querying Gemini AI...
-[USER LOG] [Gemini] Querying AI for market outcome...
-[USER LOG] [Gemini] Response received: Argentina won the 2022 World Cup, defeating France in the final.
-
-{"result": "YES", "confidence": 10000}
+[USER LOG] [Step 3] Querying DeepSeek AI...
+[USER LOG] [DeepSeek] Querying AI for market outcome...
+[USER LOG] [DeepSeek] Response received: {"result":"YES","confidence":10000}
 [USER LOG] [Step 3] AI Result: YES
 [USER LOG] [Step 3] AI Confidence: 100%
 [USER LOG] [Step 4] Generating settlement report...
@@ -475,7 +473,7 @@ Capability 'consensus@1.0.0-alpha' method 'Simple' returned an error: failed to 
 | **HTTP Trigger** | 通过 API 请求创建市场 |
 | **Log Trigger** | 基于事件的结算自动化 |
 | **EVM Read** | 从链上读取市场状态 |
-| **HTTP (AI)** | 查询 Gemini AI 获取真实世界结果 |
+| **HTTP (AI)** | 查询 DeepSeek AI 获取真实世界结果 |
 | **EVM Write** | 经 DON 共识验证的链上写入 |
 
 你的 workflow 现在可以：

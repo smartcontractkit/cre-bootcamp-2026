@@ -124,7 +124,7 @@ interface CreateMarketPayload {
 }
 
 type Config = {
-    geminiModel: string;
+    deepseekModel: string;
     evms: Array<{
         marketAddress: string;
         chainSelectorName: string;
@@ -170,7 +170,7 @@ import { cre, Runner, type Runtime } from "@chainlink/cre-sdk";
 import { onHttpTrigger } from "./httpCallback";
 
 type Config = {
-  geminiModel: string;
+  deepseekModel: string;
   evms: Array<{
     marketAddress: string;
     chainSelectorName: string;

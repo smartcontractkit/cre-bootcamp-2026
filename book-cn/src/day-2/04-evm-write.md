@@ -136,7 +136,7 @@ interface CreateMarketPayload {
 }
 
 type Config = {
-    geminiModel: string;
+    deepseekModel: string;
     evms: Array<{
         marketAddress: string;
         chainSelectorName: string;
@@ -253,7 +253,7 @@ export function onHttpTrigger(runtime: Runtime<Config>, payload: HTTPPayload): s
 
 ```json
 {
-  "geminiModel": "gemini-2.0-flash",
+  "deepseekModel": "deepseek-chat",
   "evms": [
     {
       "marketAddress": "0xYOUR_CONTRACT_ADDRESS_HERE",
@@ -272,7 +272,7 @@ export function onHttpTrigger(runtime: Runtime<Config>, payload: HTTPPayload): s
 # CRE Configuration
 CRE_ETH_PRIVATE_KEY=your_private_key_here
 CRE_TARGET=staging-settings
-GEMINI_API_KEY_VAR=your_gemini_api_key_here
+DEEPSEEK_API_KEY_VAR=your_deepseek_api_key_here
 ```
 
 如需更新，请编辑 `prediction-market` 目录下的 `.env` 文件。
@@ -347,7 +347,7 @@ cast call $MARKET_ADDRESS \
 
 - Log Trigger（响应链上事件）
 - EVM Read（读取合约状态）
-- AI 集成（Gemini API）
+- AI（Deepseek API）
 - 完整结算流程
 
 **明天见！**

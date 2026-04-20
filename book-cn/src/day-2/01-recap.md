@@ -60,7 +60,8 @@ cre.handler(
 
 ### 问：CRE workflow 在哪里运行？
 
-**答：**CRE workflow 被编译为 WASM，在去中心化预言机网络（DON）上运行。每个节点独立执行你的代码，然后通过 BFT 共识协议对比结果，返回一个经过验证的结果。
+**答：**
+CRE workflow 被编译为 WASM，在去中心化预言机网络（DON）上运行。每个节点独立执行你的代码，然后通过 BFT 共识协议对比结果，返回一个经过验证的结果。
 
 ### 问：simulation 和实际部署有什么区别？
 
@@ -71,7 +72,8 @@ cre.handler(
 
 ### 问：如果 `cre init` 或 `cre workflow simulate` 报错怎么办？
 
-**答：**请检查：
+**答：**
+请检查：
 1. `cre whoami` 确认已登录
 2. `.env` 文件在 `prediction-market` 目录下且私钥正确
 3. `bun install --cwd ./my-workflow` 已成功安装依赖
