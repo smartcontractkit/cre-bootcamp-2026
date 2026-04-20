@@ -19,7 +19,7 @@ const result = httpClient
   .result();
 ```
 
-## Opções de agregação por consenso
+## Consenso: opções de agregação 
 
 **Funções de agregação integradas:**
 
@@ -94,7 +94,7 @@ cacheSettings: {
 
 **Resultado**: Apenas **uma** chamada HTTP real é feita, enquanto todos os nós participam do consenso.
 
-> **Boa Prática**: Use `cacheSettings` para todas as requisições POST, PUT, PATCH e DELETE para evitar duplicatas.
+> **Boa Prática**: Use `cacheSettings` para todas as requisições POST, PUT, PATCH e DELETE para evitar chamadas duplicatas.
 
 ## Secrets
 

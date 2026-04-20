@@ -6,7 +6,7 @@ Bienvenidos de vuelta al Día 3! Repasemos lo que aprendimos ayer y respondamos 
 
 ### Lo Que Construimos
 
-Ayer construimos un **flujo de trabajo de creación de mercados**:
+Ayer construimos un **workflow de creación de mercados**:
 
 ```
 HTTP Request --> CRE Workflow --> PredictionMarket.sol
@@ -51,7 +51,7 @@ const writeResult = evmClient
 
 Hoy completaremos el mercado de predicción con:
 
-1. **Log Trigger** - Reacciónar a eventos on-chain
+1. **Log Trigger** - Reaccionar a eventos on-chain
 2. **EVM Read** - Leer estado de los smart contracts
 3. **HTTP Capability** - Llamar a Gemini AI
 4. **Flujo Completo** - Conectar todo
@@ -77,19 +77,19 @@ Hoy completaremos el mercado de predicción con:
 
 ## Preguntas Frecuentes
 
-### P: Por que necesitamos el patrón de escritura en dos pasos?
+### P: ¿Por qué necesitamos el patrón de escritura en dos pasos?
 
 **R:** El patrón de dos pasos proporciona:
 - **Seguridad**: El reporte está firmado criptográficamente por el DON
 - **Verificación**: Tu contrato puede verificar que la firma proviene de CRE
-- **Consenso**: Multiples nodos estan de acuerdo en los datos antes de firmar
+- **Consenso**: Múltiples nodos están de acuerdo en los datos antes de firmar
 
 ### P: Qué sucede si mi transacción falla?
 
 **R:** Verifica:
 1. Tu wallet tiene suficiente ETH para gas
 2. La dirección del contrato es correcta
-3. El limite de gas es suficiente
+3. El límite de gas es suficiente
 4. La función del contrato acepta los datos codificados
 
 ### P: Cómo depuro problemas del workflow?
@@ -102,9 +102,9 @@ runtime.log(`[DEBUG] Value: ${JSON.stringify(data)}`);
 
 Todos los logs aparecen en la salida de la simulación.
 
-### P: Puedo tener multiples triggers en un workflow?
+### P: ¿Puedo tener múltiples triggers en un workflow?
 
-**R:** Si! Eso es exactamente lo que haremos hoy. Un workflow puede tener hasta 10 triggers.
+**R:** ¡Sí! Eso es exactamente lo que haremos hoy. Un workflow puede tener hasta 10 triggers.
 
 ```typescript
 const initWorkflow = (config: Config) => {
@@ -117,7 +117,7 @@ const initWorkflow = (config: Config) => {
 
 ## Verificación Rápida del Entorno
 
-Antes de continuar, verifiquemos que todo este configurado:
+Antes de continuar, verifiquemos que todo esté configurado:
 
 Verifica la autenticación CRE
 ```bash
@@ -134,9 +134,16 @@ source .env
 
 Verifica que tengas mercados creados (salida decodificada)
 
+Configura la variable MARKET_ADDRESS:
+
 ```bash
 export MARKET_ADDRESS=0xYOUR_CONTRACT_ADDRESS
+```
 
+Ejecuta la función `getMarket` del Smart Contract del Prediction Market:
+
+
+```bash
 cast call $MARKET_ADDRESS \
   "getMarket(uint256) returns ((address,uint48,uint48,bool,uint16,uint8,uint256,uint256,string))" \
   0 \
@@ -147,4 +154,4 @@ El resultado son los datos del mercado para el market ID 0.
 
 ## Listos para el Día 3!
 
-Sumerjámonos en los Log Triggers y construyamos el flujo de trabajo de liquidación.
+Sumerjámonos en los Log Triggers y construyamos el workflow de liquidación.

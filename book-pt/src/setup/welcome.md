@@ -6,25 +6,18 @@ Bem-vindo ao **CRE Bootcamp: Construindo Mercados de Previsão com IA**!
 
 Este é um bootcamp prático de 3 dias, projetado para oferecer um passo a passo detalhado e focado em desenvolvedores sobre como construir com o Chainlink Runtime Environment (CRE).
 
-## 🎤 Conheça Seus Instrutores
-
-### Andrej Rakic
-**Engenheiro de DevRel, Chainlink Labs**
-
-![img](https://media.licdn.com/dms/image/v2/D4E03AQFsEcSPtVbMAg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1701278331107?e=2147483647&v=beta&t=MZF8AVrY1-x9zOA5rpu6tf1izQH0vdo77lduLuUDpWA)
-
-X (Twitter): [@andrej_dev](https://x.com/andrej_dev)
-
-LinkedIn: [Andrej Rakic](https://www.linkedin.com/in/andrejrakic/)
+## 🎤 Conheça Sua Instrutora
 
 ### Solange Gueiros
-**Gerente de Educação DevRel, Chainlink Labs**
+**DevRel Manager em Educação, Chainlink Labs**
 
 ![img](https://pbs.twimg.com/profile_images/1260607243436859397/SHlzS-Vl_200x200.jpg)
 
 X (Twitter): [@solangegueiros](https://twitter.com/solangegueiros)
 
 LinkedIn: [Solange Gueiros](https://www.linkedin.com/in/solangegueiros/)
+
+[solange.dev](https://solange.dev/pt/)
 
 ## Programação
 
@@ -39,7 +32,7 @@ LinkedIn: [Solange Gueiros](https://www.linkedin.com/in/solangegueiros/)
 
 ### 📅 Dia 2: Smart Contract e Criação de Mercados
 
-Construa seu primeiro workflow CRE que cria mercados de previsão on-chain:
+Construa seu primeiro workflow CRE que cria mercados de previsão on-chain!
 - Configuração do Projeto
 - Deploy do Smart Contract
 - HTTP Trigger
@@ -48,7 +41,7 @@ Construa seu primeiro workflow CRE que cria mercados de previsão on-chain:
 
 ### 📅 Dia 3: Fluxo Completo de Liquidação
 
-Conecte um sistema completo de liquidação com IA:
+Conecte um sistema completo de liquidação com IA!
 - Log Trigger para Fluxos Orientados a Eventos
 - Capability EVM Read
 - HTTP Capability

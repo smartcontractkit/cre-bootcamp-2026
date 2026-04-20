@@ -66,7 +66,7 @@ Create a new CRE project
   > my-workflow
 ```
 
-**Presiona Enter** para aceptar el valor predeterminado `my-workflow`.
+**Presiona Enter** para aceptar el nombre predeterminado `my-workflow`.
 
 ```bash
 🎉 Project created successfully!
@@ -99,7 +99,7 @@ bun install v1.3.12 (700fc117)
 
 ## Paso 2.5: Configurar Variables de Entorno
 
-El comando `cre init` crea un archivo `.env` en la raiz del proyecto. Este archivo sera usado tanto por los flujos de trabajo CRE como por Foundry (para el despliegue de smart contracts). 
+El comando `cre init` crea un archivo `.env` en la raíz del proyecto. Este archivo será usado tanto por los workflows CRE como por Foundry (para el despliegue de smart contracts). 
 
 Echa un vistazo al `.env`:
 
@@ -124,7 +124,7 @@ Hoy no vamos a hacer transacciones on-chain, así que no necesitas actualizar el
 
 ## Paso 3: Explorar la Estructura del Proyecto
 
-Veamos que creo `cre init` para nosotros:
+Veamos qué creó `cre init` para nosotros:
 
 ```bash
 prediction-market/
@@ -141,7 +141,7 @@ prediction-market/
 
 ### Archivos Clave Explicados
 
-| Archivo | Proposito |
+| Archivo | Propósito |
 |---------|-----------|
 | `project.yaml` | Endpoints RPC para acceso a blockchain |
 | `secrets.yaml` | Mapea variables de entorno a secretos |
@@ -152,7 +152,7 @@ prediction-market/
 
 ## Paso 4: Ejecutar Tu Primera Simulación
 
-Ahora la parte emocionante - simulemos el flujo de trabajo:
+Ahora la parte emocionante - simulemos el workflow:
 
 ```bash
 cre workflow simulate my-workflow
@@ -172,11 +172,11 @@ Workflow Simulation Result:
 [SIMULATION] Execution finished signal received
 ```
 
-**Felicitaciones!** Acabas de ejecutar tu primer flujo de trabajo CRE!
+**Felicitaciones!** Acabas de ejecutar tu primer workflow CRE!
 
-## Paso 5: Entender el Codigo Hello World
+## Paso 5: Entender el Código Hello World
 
-Veamos que hay dentro de `my-workflow/main.ts`:
+Veamos `my-workflow/main.ts`:
 
 ```typescript
 // my-workflow/main.ts
@@ -215,7 +215,7 @@ main();
 
 ### El Patrón: Trigger -> Callback
 
-Cada flujo de trabajo CRE sigue este patrón:
+Cada workflow CRE sigue este patrón:
 
 ```ts
 cre.handler(trigger, callback)
@@ -228,7 +228,7 @@ cre.handler(trigger, callback)
 
 ## Referencia de Comandos Clave
 
-| Comando | Que Hace |
+| Comando | Qué Hace |
 |---------|----------|
 | `cre init` | Crea un nuevo proyecto CRE |
 | `cre workflow simulate <name>` | Simula un workflow localmente |

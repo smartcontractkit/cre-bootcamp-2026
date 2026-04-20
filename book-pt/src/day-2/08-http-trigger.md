@@ -2,7 +2,9 @@
 
 Estamos usando um HTTP-trigger para criar um Mercado (ou uma pergunta) no projeto Prediction Market, via requisições HTTP.
 
-Vamos construir o workflow de HTTP trigger. Trabalharemos no diretório `my-workflow` criado pelo `cre init`.
+Vamos construir o workflow de HTTP trigger. 
+
+Trabalharemos no diretório `my-workflow` criado pelo `cre init`.
 
 ### Passo 1: Criar httpCallback.ts
 
@@ -19,7 +21,7 @@ import {
     decodeJson,
 } from "@chainlink/cre-sdk";
 
-// Interface simples para nosso payload HTTP
+// Simple interface for our HTTP payload
 interface CreateMarketPayload {
     question: string;
 }
@@ -52,8 +54,8 @@ export function onHttpTrigger(runtime: Runtime<Config>, payload: HTTPPayload): s
         return "Error: Question is required";
     }
 
-    // Passos 2-6: EVM Write (coberto no próximo capítulo)
-    // Completaremos isso no capítulo EVM Write
+    // Steps 2-6: EVM Write (covered in next chapter)
+    // We'll complete this in the EVM Write chapter
 
     return "Success";
 }

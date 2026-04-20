@@ -1,4 +1,4 @@
-# Encerramento: Ponta a Ponta & Próximos Passos
+# Encerramento: Fluxo Completo & Próximos Passos
 
 Você construiu um mercado de previsão com IA. 
 
@@ -47,7 +47,7 @@ forge create src/PredictionMarket.sol:PredictionMarket \
   --constructor-args 0x15fc6ae953e024d975e77382eeec56a9101f9f88
 ```
 
-Salve o endereço implantado e atualize `config.staging.json`:
+Salve o endereço publicado e atualize `config.staging.json`:
 
 ```bash
 export MARKET_ADDRESS=0xYOUR_DEPLOYED_ADDRESS
@@ -55,8 +55,10 @@ export MARKET_ADDRESS=0xYOUR_DEPLOYED_ADDRESS
 
 ### Passo 1: Criar um Mercado
 
+Volte para o diretório prediction-market
+
 ```bash
-cd .. # certifique-se de estar no diretório prediction-market
+cd ..
 cre workflow simulate my-workflow --broadcast
 ```
 
@@ -68,8 +70,9 @@ Selecione HTTP trigger (opção 1), depois insira:
 
 ### Passo 2: Fazer Previsões
 
+Prever YES no mercado #0 com 0.01 ETH
+
 ```bash
-# Prever YES no mercado #0 com 0.01 ETH
 cast send $MARKET_ADDRESS \
   "predict(uint256,uint8)" 0 0 \
   --value 0.01ether \
@@ -129,21 +132,21 @@ Confira [5 Ways to Build with CRE](https://blog.chain.link/5-ways-to-build-with-
 
 Este Hackathon da Chainlink reuniu desenvolvedores de todo o mundo para construir aplicações avançadas aproveitando a plataforma Chainlink.
 
-[Anunciando os Vencedores](https://blog.chain.link/convergence-hackathon-winners/)
-[Explore os projetos vencedores](https://chain.link/hackathon/winners)
+- [Anunciando os Vencedores](https://blog.chain.link/convergence-hackathon-winners/)
+- [Explore os projetos vencedores](https://chain.link/hackathon/winners)
 
 
-### 🔗 Links Úteis sobre CRE
+### 🔗 Links Úteis sobre CRE (em Inglês)
 
-- [Computação por Consenso](https://docs.chain.link/cre/concepts/consensus-computing)
-- [Finalidade e Níveis de Confiança](https://docs.chain.link/cre/concepts/finality-ts)
-- [Gerenciamento de Secrets](https://docs.chain.link/cre/guides/workflow/secrets)
-- [Deploy de Workflows](https://docs.chain.link/cre/guides/operations/deploying-workflows)
-- [Monitoramento e Debug de Workflows](https://docs.chain.link/cre/guides/operations/monitoring-workflows)
+- [Consensus Computing](https://docs.chain.link/cre/concepts/consensus-computing)
+- [Finality and Confidence Levels](https://docs.chain.link/cre/concepts/finality-ts)
+- [Secrets Management](https://docs.chain.link/cre/guides/workflow/secrets)
+- [Deploying Workflows](https://docs.chain.link/cre/guides/operations/deploying-workflows)
+- [Monitoring & Debugging Workflows](https://docs.chain.link/cre/guides/operations/monitoring-workflows)
 
 ### 🚀 Deploy em Produção
 
-Pronto para ir ao vivo? Solicite Acesso Antecipado:
+Pronto para publicar em produção? Solicite Seu Acesso Antecipado:
 - [cre.chain.link/request-access](https://cre.chain.link/request-access)
 
 ### 💬 Junte-se à Comunidade
@@ -154,4 +157,4 @@ Pronto para ir ao vivo? Solicite Acesso Antecipado:
 
 ---
 
-## 🎉 Obrigado!
+## 🎉 Obrigada!

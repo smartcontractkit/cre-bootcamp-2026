@@ -138,9 +138,9 @@ export function onHttpTrigger(runtime: Runtime<Config>, payload: HTTPPayload): s
 }
 ```
 
-## Ejecutando el Flujo de Trabajo Completo
+## Ejecutando el Workflow Completo
 
-### 1. Asegúrate de que tu contrato este desplegado
+### 1. Asegúrate de que tu contrato esté desplegado
 
 Verifica que hayas actualizado el `my-workflow/config.staging.json` con la dirección de tu contrato desplegado:
 
@@ -159,7 +159,7 @@ Verifica que hayas actualizado el `my-workflow/config.staging.json` con la direc
 
 ### 2. Verifica tu archivo .env
 
-El archivo `.env` fue creado anteriormente en la configuración del proyecto CRE. Asegúrate de que este en el directorio `prediction-market` y contenga:
+El archivo `.env` fue creado anteriormente en la configuración del proyecto CRE. Asegúrate de que esté en el directorio `prediction-market` y contenga:
 
 ```bash
 # CRE Configuration
@@ -182,11 +182,10 @@ Para transmitir transacciones realmente durante la simulación, usa el flag `--b
 - En la terminal, ejecuta:
 
 ```bash
-# Desde el directorio prediction-market
 cre workflow simulate my-workflow --broadcast
 ```
 
-> **Nota**: Asegúrate de estar en el directorio `prediction-market` (directorio padre de `my-workflow`), y que el archivo `.env` este en el directorio `prediction-market`.
+> **Nota**: Asegúrate de estar en el directorio `prediction-market` (directorio padre de `my-workflow`), y que el archivo `.env` esté en el directorio `prediction-market`.
 
 ### 4. Seleccionar HTTP trigger e ingresar payload
 
@@ -241,7 +240,7 @@ Verifica la transacción en [Sepolia Etherscan](https://sepolia.etherscan.io).
 
 > En una computadora con Windows, usa `Git Bash` para ejecutar los comandos de esta sección.
 
-Puedes verificar que el mercado fue creado leyendolo desde el contrato.
+Puedes verificar que el mercado fue creado leyéndolo desde el contrato.
 
 Configura la variable MARKET_ADDRESS:
 
@@ -264,7 +263,7 @@ cast call $MARKET_ADDRESS \
   --rpc-url "https://ethereum-sepolia-rpc.publicnode.com"
 ```
 
-Esto devolvera los datos del mercado para el market ID 0, mostrando el creador, timestamps, estado de liquidación, pools y pregunta.
+Esto devolverá los datos del mercado para el market ID 0, mostrando el creador, timestamps, estado de liquidación, pools y pregunta.
 
 Ejemplo del resultado:
 
@@ -278,13 +277,13 @@ Ejemplo del resultado:
 Has logrado exitosamente:
 - Configurar un proyecto CRE
 - Desplegar un smart contract
-- Construir un flujo de trabajo activado por HTTP
+- Construir un workflow activado por HTTP
 - Escribir datos en la blockchain
 
-Manana agregaremos:
-- Log Triggers (reacciónar a eventos on-chain)
+Mañana agregaremos:
+- Log Triggers (reaccionar a eventos on-chain)
 - EVM Read (leer estado del contrato)
 - Integración con IA (API de Gemini)
 - Flujo completo de liquidación
 
-**Nos vemos manana!**
+**Nos vemos mañana!**

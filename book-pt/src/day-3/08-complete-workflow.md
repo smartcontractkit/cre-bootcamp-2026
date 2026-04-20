@@ -1,6 +1,6 @@
 # Fluxo Completo: Conectando Tudo
 
-É hora de combinar tudo em um workflow completo e funcional de liquidação!
+É hora de combinar tudo em um workflow de liquidação de mercado completo e funcional!
 
 ## O Fluxo Completo
 
@@ -67,7 +67,7 @@ import {
 } from "viem";
 import { askGemini } from "./gemini";
 
-// Tipos inline
+// Inline types
 type Config = {
   geminiModel: string;
   evms: Array<{
@@ -78,9 +78,9 @@ type Config = {
 };
 
 interface Market {
-  creator: string;
-  createdAt: bigint;
-  settledAt: bigint;
+  creator: `0x${string}`;
+  createdAt: number;
+  settledAt: number;
   settled: boolean;
   confidence: number;
   outcome: number; // 0 = Yes, 1 = No
@@ -95,15 +95,15 @@ interface GeminiResult {
 }
 
 // ===========================
-// ABIs do Contrato
+// Contract ABIs
 // ===========================
 
-/** ABI para o evento SettlementRequested */
+/** ABI for the SettlementRequested event */
 const EVENT_ABI = parseAbi([
   "event SettlementRequested(uint256 indexed marketId, string question)",
 ]);
 
-/** ABI para leitura de dados do mercado */
+/** ABI for reading market data */
 const GET_MARKET_ABI = [
   {
     name: "getMarket",
@@ -130,25 +130,25 @@ const GET_MARKET_ABI = [
   },
 ] as const;
 
-/** Parâmetros ABI para relatório de liquidação (outcome é uint8 para enum Prediction) */
+/** ABI parameters for settlement report (outcome is uint8 for Prediction enum) */
 const SETTLEMENT_PARAMS = parseAbiParameters("uint256 marketId, uint8 outcome, uint16 confidence");
 
 // ===========================
-// Handler do Log Trigger
+// Log Trigger Handler
 // ===========================
 
 /**
- * Lida com eventos do Log Trigger para liquidar mercados de previsão.
+ * Handles Log Trigger events for settling prediction markets.
  *
- * Fluxo:
- * 1. Decodificar o evento SettlementRequested
- * 2. Ler detalhes do mercado do contrato (EVM Read)
- * 3. Consultar Gemini AI para o resultado (HTTP)
- * 4. Escrever o relatório de liquidação no contrato (EVM Write)
+ * Flow:
+ * 1. Decode the SettlementRequested event
+ * 2. Read market details from the contract (EVM Read)
+ * 3. Query Gemini AI for the outcome (HTTP)
+ * 4. Write the settlement report to the contract (EVM Write)
  *
- * @param runtime - Runtime CRE com config e capabilities
- * @param log - Os dados do evento EVM log
- * @returns Mensagem de sucesso com hash da transação
+ * @param runtime - CRE runtime with config and capabilities
+ * @param log - The EVM log event data
+ * @returns Success message with transaction hash
  */
 export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
   runtime.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
@@ -157,7 +157,7 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
 
   try {
     // ─────────────────────────────────────────────────────────────
-    // Passo 1: Decodificar o log do evento
+    // Step 1: Decode the event log
     // ─────────────────────────────────────────────────────────────
     const topics = log.topics.map((t: Uint8Array) => bytesToHex(t)) as [
       `0x${string}`,
@@ -173,7 +173,7 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
     runtime.log(`[Step 1] Question: "${question}"`);
 
     // ─────────────────────────────────────────────────────────────
-    // Passo 2: Ler detalhes do mercado do contrato (EVM Read)
+    // Step 2: Read market details from contract (EVM Read)
     // ─────────────────────────────────────────────────────────────
     runtime.log("[Step 2] Reading market details from contract...");
 
@@ -200,7 +200,7 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
       .callContract(runtime, {
         call: encodeCallMsg({
           from: zeroAddress,
-          to: evmConfig.marketAddress,
+          to: evmConfig.marketAddress as `0x${string}`,
           data: callData,
         })
       })
@@ -223,20 +223,20 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
     }
 
     // ─────────────────────────────────────────────────────────────
-    // Passo 3: Consultar IA (HTTP)
+    // Step 3: Query AI (HTTP)
     // ─────────────────────────────────────────────────────────────
     runtime.log("[Step 3] Querying Gemini AI...");
 
     const geminiResult = askGemini(runtime, question);
     
-    // Extrair JSON da resposta (IA pode incluir texto antes/depois do JSON)
+    // Extract JSON from response (AI may include prose before/after the JSON)
     const jsonMatch = geminiResult.geminiResponse.match(/\{[\s\S]*"result"[\s\S]*"confidence"[\s\S]*\}/);
     if (!jsonMatch) {
       throw new Error(`Could not find JSON in AI response: ${geminiResult.geminiResponse}`);
     }
     const parsed = JSON.parse(jsonMatch[0]) as GeminiResult;
 
-    // Validar o resultado - apenas YES ou NO podem liquidar um mercado
+    // Validate the result - only YES or NO can settle a market
     if (!["YES", "NO"].includes(parsed.result)) {
       throw new Error(`Cannot settle: AI returned ${parsed.result}. Only YES or NO can settle a market.`);
     }
@@ -247,22 +247,22 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
     runtime.log(`[Step 3] AI Result: ${parsed.result}`);
     runtime.log(`[Step 3] AI Confidence: ${parsed.confidence / 100}%`);
 
-    // Converter string do resultado para valor do enum Prediction (0 = Yes, 1 = No)
+    // Convert result string to Prediction enum value (0 = Yes, 1 = No)
     const outcomeValue = parsed.result === "YES" ? 0 : 1;
 
     // ─────────────────────────────────────────────────────────────
-    // Passo 4: Escrever relatório de liquidação no contrato (EVM Write)
+    // Step 4: Write settlement report to contract (EVM Write)
     // ─────────────────────────────────────────────────────────────
     runtime.log("[Step 4] Generating settlement report...");
 
-    // Codificar dados de liquidação
+    // Encode settlement data
     const settlementData = encodeAbiParameters(SETTLEMENT_PARAMS, [
       marketId,
       outcomeValue,
       parsed.confidence,
     ]);
 
-    // Adicionar prefixo 0x01 para que o contrato direcione para _settleMarket
+    // Prepend 0x01 prefix so contract routes to _settleMarket
     const reportData = ("0x01" + settlementData.slice(2)) as `0x${string}`;
 
     const reportResponse = runtime
@@ -306,7 +306,9 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
 
 ## Fazendo uma Previsão
 
-Antes de solicitar a liquidação, vamos fazer uma previsão no mercado. Isso demonstra o fluxo completo - previsões com ETH, liquidação por IA e vencedores resgatando sua parte.
+Antes de solicitar a liquidação, faça uma previsão no mercado. 
+
+Isso demonstrará o fluxo completo - previsões com ETH, liquidação por IA e vencedores resgatando sua parte.
 
 > Em um computador Windows, use `Git Bash` para executar todos os comandos **cast**.
 
@@ -319,7 +321,7 @@ Vamos prever:
 - No mercado id #0
 - Pagando 0.01 ETH
 
-Execute este comando para executar a função predict no PredictionMarket.sol implantado no endereço da variável $MARKET_ADDRESS:
+Envie este comando para executar a função `predict` no PredictionMarket.sol que está publicado na variável $MARKET_ADDRESS:
 
 ```bash
 # Prever YES no mercado #0 com 0.01 ETH
@@ -330,7 +332,7 @@ cast send $MARKET_ADDRESS \
   --private-key $CRE_ETH_PRIVATE_KEY
 ```
 
-Podemos então ver os detalhes do mercado novamente:
+Podemos então ver os detalhes do mercado novamente, incluindo a previsão:
 
 ```bash
 cast call $MARKET_ADDRESS \
@@ -339,11 +341,15 @@ cast call $MARKET_ADDRESS \
   --rpc-url "https://ethereum-sepolia-rpc.publicnode.com"
 ```
 
-E até obter apenas nossa previsão:
+E até obter apenas nossa previsão!
+
+- Defina o endereço da sua carteira na variável `PREDICTOR`:
 
 ```bash
 export PREDICTOR=0xYOUR_WALLET_ADDRESS
 ```
+
+- E depois execute:
 
 ```bash
 cast call $MARKET_ADDRESS \
@@ -352,8 +358,8 @@ cast call $MARKET_ADDRESS \
   --rpc-url "https://ethereum-sepolia-rpc.publicnode.com"
 ```
 
-- Você pode ter múltiplos participantes prevendo - alguns YES, alguns NO. 
-- Após o CRE liquidar o mercado, os vencedores podem chamar `claim()` para receber sua parte do pool total!
+- Múltiplos participantes podem prever - alguns YES, alguns NO. 
+- Após o CRE liquidar o mercado, os vencedores podem executar a função `claim()` para receber sua parte do pool total!
 
 ---
 
@@ -464,9 +470,9 @@ cast send $MARKET_ADDRESS \
 
 ---
 
-## 🎉 Você Conseguiu!
+## 🎉 **Parabéns!**
 
-**Parabéns!** Você acabou de construir e executar um mercado de previsão completo com IA usando CRE!
+Você acabou de construir e executar um mercado de previsão completo com IA usando CRE!
 
 Vamos recapitular o que você realizou:
 
@@ -490,4 +496,4 @@ Seu workflow agora:
 
 ## Próximos Passos
 
-Vá para o capítulo final para um passo a passo completo de ponta a ponta e o que vem a seguir na sua jornada CRE!
+Vá para o capítulo final e veja um passo a passo completo, de ponta a ponta, e o que vem a seguir na sua jornada CRE!

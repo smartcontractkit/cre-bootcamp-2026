@@ -22,7 +22,7 @@ Aquí está el viaje completo desde la creación del mercado hasta reclamar las 
 |  2. HACER PREDICCIONES (Llamadas Directas al Contrato)           |
 |     +-> Los usuarios llaman predict() con apuestas en ETH       |
 |                                                                  |
-|  3. SOLICITAR LIQUIDACION (Llamada Directa al Contrato)          |
+|  3. SOLICITAR LIQUIDACIÓN (Llamada Directa al Contrato)          |
 |     +-> Cualquiera llama requestSettlement() -> Emite Evento     |
 |                                                                  |
 |  4. LIQUIDAR MERCADO (Log Trigger)                               |
@@ -55,8 +55,10 @@ export MARKET_ADDRESS=0xYOUR_DEPLOYED_ADDRESS
 
 ### Paso 1: Crear un Mercado
 
+Asegúrate de estar en el directorio prediction-market
+
 ```bash
-cd .. # asegurate de estar en el directorio prediction-market
+cd ..
 cre workflow simulate my-workflow --broadcast
 ```
 
@@ -68,8 +70,9 @@ Selecciona HTTP trigger (opción 1), luego ingresa:
 
 ### Paso 2: Hacer Predicciones
 
+Predict YES on market #0 with 0.01 ETH
+
 ```bash
-# Predict YES on market #0 with 0.01 ETH
 cast send $MARKET_ADDRESS \
   "predict(uint256,uint8)" 0 0 \
   --value 0.01ether \
@@ -94,7 +97,7 @@ Guarda el hash de la transacción!
 cre workflow simulate my-workflow --broadcast
 ```
 
-Selecciona Log trigger (opción 2), ingresa el hash de la transacción e indice del evento 0.
+Selecciona Log trigger (opción 2), ingresa el hash de la transacción e índice del evento 0.
 
 ### Paso 5: Reclamar Ganancias
 
@@ -110,16 +113,16 @@ cast send $MARKET_ADDRESS \
 ---
 
 
-## Que Sigue?
+## ¿Qué Sigue?
 
 ### Explorar Casos de Uso
 
 Consulta [5 Ways to Build with CRE](https://blog.chain.link/5-ways-to-build-with-cre/):
 
 1. **Emisión de Stablecoins** - Verificación automatizada de reservas
-2. **Servicio de Activos Tokenizados** - Gestion de activos del mundo real
+2. **Servicio de Activos Tokenizados** - Gestión de activos del mundo real
 3. **Mercados de Predicción Impulsados por IA** - Acabas de construir esto!
-4. **Agentes de IA con Pagos x402** - Agentes autonomos
+4. **Agentes de IA con Pagos x402** - Agentes autónomos
 5. **Proof of Reserve Personalizado** - Infraestructura de transparencia
 
 
@@ -127,13 +130,13 @@ Consulta [5 Ways to Build with CRE](https://blog.chain.link/5-ways-to-build-with
 
 ![cre-hackathon-2026](../assets/cre-hackathon-2026.png)
 
-Este Hackathon de Chainlink reunio a desarrolladores de todo el mundo para construir aplicaciones avanzadas aprovechando la plataforma Chainlink.
+Este Hackathon de Chainlink reunió a desarrolladores de todo el mundo para construir aplicaciones avanzadas aprovechando la plataforma Chainlink.
 
-[Anunciando los Ganadores](https://blog.chain.link/convergence-hackathon-winners/)
-[Explorar los proyectos ganadores](https://chain.link/hackathon/winners)
+- [Anunciando los Ganadores](https://blog.chain.link/convergence-hackathon-winners/)
+- [Explorar los proyectos ganadores](https://chain.link/hackathon/winners)
 
 
-### Enlaces Utiles de CRE
+### Enlaces Útiles de CRE (en Inglés)
 
 - [Consensus Computing](https://docs.chain.link/cre/concepts/consensus-computing)
 - [Finality and Confidence Levels](https://docs.chain.link/cre/concepts/finality-ts)
@@ -146,7 +149,7 @@ Este Hackathon de Chainlink reunio a desarrolladores de todo el mundo para const
 Listo para salir en vivo? Solicita Early Access:
 - [cre.chain.link/request-access](https://cre.chain.link/request-access)
 
-### Unete a la Comunidad
+### Únete a la Comunidad
 
 - [Discord](https://discord.gg/chainlink) - Obtener ayuda y compartir tus proyectos
 - [Developer Docs](https://docs.chain.link/cre) - Profundizar en CRE

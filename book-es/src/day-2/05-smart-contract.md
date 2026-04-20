@@ -1,6 +1,6 @@
 # Smart Contract: PredictionMarket.sol
 
-Ahora vamos a desplegar el smart contract con el que nuestro flujo de trabajo CRE interactuara.
+Ahora vamos a desplegar el smart contract con el que nuestro workflow CRE interactuará.
 
 ## Cómo Funciona
 
@@ -12,14 +12,14 @@ Nuestro mercado de predicción soporta cuatro acciones clave:
 +-------------------------------------------------------------------------+
 |                                                                          |
 |  1. CREAR MERCADO                                                        |
-|     Cualquiera crea un mercado con una pregunta de Si/No                 |
-|     Ejemplo: "Ganara Argentina el Mundial 2022?"                         |
+|     Cualquiera crea un mercado con una pregunta de Sí/No                 |
+|     Ejemplo: "¿Ganará Argentina el Mundial 2022?"                        |
 |                                                                          |
 |  2. PREDECIR                                                             |
-|     Los usuarios apuestan ETH en Si o No                                 |
-|     -> Los fondos van al Pool de Si o al Pool de No                      |
+|     Los usuarios apuestan ETH en Sí o No                                 |
+|     -> Los fondos van al Pool de Sí o al Pool de No                      |
 |                                                                          |
-|  3. SOLICITAR LIQUIDACION                                                |
+|  3. SOLICITAR LIQUIDACIÓN                                                |
 |     Cualquiera puede solicitar la liquidación                            |
 |     -> Emite el evento SettlementRequested                               |
 |     -> El Log Trigger de CRE detecta el evento                          |
@@ -33,7 +33,7 @@ Nuestro mercado de predicción soporta cuatro acciones clave:
 +-------------------------------------------------------------------------+
 ```
  
-## El Codigo del Contrato
+## El Código del Contrato
 
 **Crear `src/PredictionMarket.sol`** con el código del contrato mostrado a continuación:
 
@@ -266,11 +266,11 @@ contract PredictionMarket is ReceiverTemplate {
 event SettlementRequested(uint256 indexed marketId, string question);
 ```
 
-Este evento es lo que el **Log Trigger** de CRE escucha. Cuando se emite, CRE ejecuta automaticamente el flujo de trabajo de liquidación.
+Este evento es lo que el **Log Trigger** de CRE escucha. Cuando se emite, CRE ejecuta automáticamente el workflow de liquidación.
 
 ### 2. La Función `onReport`
 
-El contrato base `ReceiverTemplate` maneja `onReport()` automaticamente, incluyendo verificaciones de seguridad para asegurar que solo el `KeystoneForwarder` confiable de Chainlink pueda llamarlo. Tu contrato solo necesita implementar `_processReport()` para manejar los datos decodificados del reporte.
+El contrato base `ReceiverTemplate` maneja `onReport()` automáticamente, incluyendo verificaciones de seguridad para asegurar que solo el `KeystoneForwarder` confiable de Chainlink pueda llamarlo. Tu contrato solo necesita implementar `_processReport()` para manejar los datos decodificados del reporte.
 
 CRE llama a `onReport()` a través del KeystoneForwarder para entregar los resultados de liquidación. El `report` contiene `(marketId, outcome, confidence)` codificados en ABI.
 

@@ -1,6 +1,8 @@
 # Log Trigger: Fluxos Orientados a Eventos
 
-O grande conceito novo de hoje: **Log Triggers**. Eles permitem que seu workflow reaja a eventos on-chain automaticamente.
+O conceito novo de hoje: **Log Triggers**. 
+
+Eles permitem que seu workflow reaja a eventos on-chain automaticamente.
 
 ## Familiarize-se com a capability
 
@@ -52,14 +54,14 @@ O método `logTrigger()` aceita um objeto de configuração:
 
 | Padrão | Log Trigger | CRON Trigger |
 |--------|-------------|--------------|
-| **Quando dispara** | Evento on-chain emitido | Agendamento (a cada hora, etc.) |
-| **Estilo** | Reativo | Proativo |
+| **Quando** | Evento on-chain emitido | Agendamento (a cada hora, etc.) |
+| **Tipo** | Reativo | Proativo |
 | **Caso de uso** | "Quando X acontecer, faça Y" | "Verificar a cada hora se X" |
 | **Exemplo** | Liquidação solicitada → Liquidar | A cada hora → Verificar todos os mercados |
 
 ## Entendendo o Payload EVMLog
 
-Quando o CRE aciona seu callback, ele fornece:
+Quando o CRE aciona o callback do logTrigger, ele fornece:
 
 | Propriedade | Tipo | Descrição |
 |-------------|------|-----------|

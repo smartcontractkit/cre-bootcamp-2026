@@ -2,15 +2,17 @@
 
 ## Leyendo los Datos del Mercado
 
-Para leer los datos del mercado, nuestro contrato tiene una función `getMarket`:
+Para leer los datos del mercado, nuestro contrato tiene la función `getMarket`:
 
 ```solidity
 function getMarket(uint256 marketId) external view returns (Market memory);
 ```
 
-Llamemosla desde CRE.
+Llamémosla desde CRE.
 
 ### Paso 1: Definir el ABI
+
+Esta es la ABI para la función `getMarket`, que se utilizará en el siguiente paso:
 
 ```typescript
 const GET_MARKET_ABI = [
@@ -42,7 +44,9 @@ const GET_MARKET_ABI = [
 
 ### Paso 2: Actualizar el archivo `logCallback.ts`
 
-Ahora actualicemos `my-workflow/logCallback.ts` para agregar funcionalidad de EVM Read:
+Actualicemos `my-workflow/logCallback.ts` para agregar funcionalidad de EVM Read.
+
+Sobrescribe la versión anterior con el siguiente código:
 
 ```typescript
 // prediction-market/my-workflow/logCallback.ts
@@ -74,9 +78,9 @@ type Config = {
 };
 
 interface Market {
-  creator: string;
-  createdAt: bigint;
-  settledAt: bigint;
+  creator: `0x${string}`;
+  createdAt: number;
+  settledAt: number;
   settled: boolean;
   confidence: number;
   outcome: number;
@@ -154,7 +158,7 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
     .callContract(runtime, {
       call: encodeCallMsg({
         from: zeroAddress,
-        to: evmConfig.marketAddress,
+        to: evmConfig.marketAddress as `0x${string}`,
         data: callData,
       }),
     })
@@ -184,12 +188,11 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
 
 ## Simulando un EVM Read via Log Trigger
 
-Ahora ejecutemos la simulación CRE una vez más
+Ejecuta la simulación CRE una vez más, desde el directorio prediction-market
 
 ### 1. Ejecutar la simulación
 
 ```bash
-# Desde el directorio prediction-market
 cre workflow simulate my-workflow
 ```
 
@@ -213,7 +216,7 @@ Enter transaction hash (0x...):
 
 Pega el hash de la transacción que guardaste previamente (de la llamada a la función `requestSettlement`).
 
-### 4. Ingresar el indice del evento
+### 4. Ingresar el índice del evento
 
 ```bash
 Enter event index (0-based): 0
@@ -238,13 +241,14 @@ Workflow Simulation Result:
 [SIMULATION] Execution finished signal received
 ```
 
-### Consenso en las Lecturas
+### Consenso en EVM Read
 
-Incluso las operaciones de lectura se ejecutan a través de multiples nodos del DON:
+Incluso las operaciones de lectura se ejecutan a través de múltiples nodos del DON:
+
 1. Cada nodo lee los datos
 2. Los resultados se comparan
 3. Se alcanza consenso BFT
-4. Se devuelve un unico resultado verificado
+4. Se devuelve un único resultado verificado
 
 ## Resumen
 
@@ -254,6 +258,6 @@ Has aprendido:
 - Cómo decodificar los resultados
 - Lectura con verificación por consenso
 
-## Siguientes Pasos
+## Siguiente Paso
 
 Ahora llamemos a Gemini AI para determinar el resultado del mercado!

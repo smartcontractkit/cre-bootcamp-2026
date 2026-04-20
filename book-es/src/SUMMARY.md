@@ -35,7 +35,7 @@
 # Día 3: Flujo Completo de Liquidación
 
 - [Repaso y Preguntas](day-3/01-recap.md)
-- [Log Trigger: Flujos de Trabajo Basados en Eventos](day-3/02-log-trigger-concepts.md)
+- [Log Trigger: Workflows Basados en Eventos](day-3/02-log-trigger-concepts.md)
 - [Log Trigger en Prediction Market](day-3/03-log-trigger.md)
 - [EVM Read: Leyendo el Estado del Contrato](day-3/04-evm-read-concepts.md)
 - [EVM Read en Prediction Market](day-3/05-evm-read.md)

@@ -2,7 +2,9 @@
 
 Estamos usando un HTTP trigger para crear un Mercado (o una pregunta) en el proyecto Prediction Market, a través de solicitudes HTTP.
 
-Construyamos el flujo de trabajo HTTP trigger. Trabajaremos en el directorio `my-workflow` creado por `cre init`.
+Construyamos el workflow HTTP trigger. 
+
+Trabajaremos en el directorio `my-workflow` creado por `cre init`.
 
 ### Paso 1: Crear httpCallback.ts
 
@@ -114,7 +116,7 @@ main();
 cre workflow simulate my-workflow
 ```
 
-Deberias ver:
+Deberías ver:
 
 ```bash
 Workflow compiled
@@ -129,7 +131,7 @@ Puedes ingresar una ruta de archivo o JSON directamente.
 
 ### 2. Ingresar el Payload JSON
 
-El payload sera la pregunta con la cual estamos creando el mercado de predicción.
+El payload será la pregunta con la cual estamos creando el mercado de predicción.
 Probemos con algo del pasado, que ya sabemos la respuesta:
 
 `Will Argentina win the 2022 World Cup?`
@@ -159,7 +161,7 @@ Usando el formato JSON, pega:
 [SIMULATION] Execution finished signal received
 ```
 
-> La pregunta del mercado (HTTP Payload) podria venir de cualquier sistema externo.
+> La pregunta del mercado (HTTP Payload) podría venir de cualquier sistema externo.
 
 ## Autorización (Producción)
 
@@ -177,7 +179,7 @@ http.trigger({
 })
 ```
 
-Esto asegura que solo los llamadores autorizados puedan activar tu flujo de trabajo. Para simulación, usamos un string vacio.
+Esto asegura que solo los llamadores autorizados puedan activar tu workflow. Para simulación, usamos un string vacío.
 
 
 ## Resumen
@@ -191,4 +193,4 @@ Has aprendido:
 ## Siguientes Pasos
 
 - Ahora haremos una transacción en el smart contract del prediction market. 
-- Completemos el flujo de trabajo escribiendo el mercado en la blockchain!
+- Completemos el workflow escribiendo el mercado en la blockchain!

@@ -66,7 +66,7 @@ Create a new CRE project
   > my-workflow
 ```
 
-**Pressione Enter** para aceitar o padrão `my-workflow`.
+**Pressione Enter** para aceitar o nome padrão `my-workflow`.
 
 ```bash
 🎉 Project created successfully!
@@ -176,7 +176,7 @@ Workflow Simulation Result:
 
 ## Passo 5: Entender o Código Hello World
 
-Vamos ver o que está dentro de `my-workflow/main.ts`:
+Vamos ver `my-workflow/main.ts`:
 
 ```typescript
 // my-workflow/main.ts

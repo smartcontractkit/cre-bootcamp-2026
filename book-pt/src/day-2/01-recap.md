@@ -1,6 +1,7 @@
 # Revisão & Perguntas
 
-Bem-vindo de volta ao Dia 2! Vamos revisar o que aprendemos ontem e responder a quaisquer perguntas.
+Bem-vindo de volta! Vamos revisar o que aprendemos ontem e responder a quaisquer perguntas.
+
 
 ## Revisão do Dia 1
 
@@ -16,12 +17,12 @@ Bem-vindo de volta ao Dia 2! Vamos revisar o que aprendemos ontem e responder a 
 
 ## Agenda de Hoje
 
-Hoje vamos completar o mercado de previsão com:
+Hoje vamos iniciar o mercado de previsão com:
 
 1. **PredictionMarket.sol** - Criando o smart contract
 2. **HTTP Trigger** - Recebendo requisições HTTP externas
 3. **Capability EVM Write** - O padrão de dois passos (report → writeReport)
-4. **Workflow de Criação de Mercado** - Criando uma pergunta de mercado de previsão
+4. **Workflow de Criação de Mercado** - Criando uma pergunta no mercado de previsão
 
 
 ### Arquitetura
@@ -39,7 +40,7 @@ Hoje vamos completar o mercado de previsão com:
 
 ## Verificação Rápida do Ambiente
 
-Antes de continuar, vamos verificar se está tudo configurado:
+Antes de continuar, verifique se está tudo configurado:
 
 ```bash
 # Verificar autenticação CRE

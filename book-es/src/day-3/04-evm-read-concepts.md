@@ -4,7 +4,7 @@ Antes de poder liquidar un mercado con IA, necesitamos leer sus detalles de la b
 
 La capacidad **EVM Read** (`callContract`) te permite llamar funciones `view` y `pure` en smart contracts. 
 
-Todas las lecturas se realizan a través de multiples nodos del DON y se verifican mediante consenso, protegiendo contra endpoints RPC defectuosos, datos obsoletos o respuestas maliciosas.
+Todas las lecturas se realizan a través de múltiples nodos del DON y se verifican mediante consenso, protegiendo contra endpoints RPC defectuosos, datos obsoletos o respuestas maliciosas.
 
 ## El patrón de lectura
 
@@ -55,9 +55,9 @@ const decodedValue = decodeFunctionResult({
 | `LATEST_BLOCK_NUMBER` | Bloque más reciente |
 | `blockNumber(n)` | Número de bloque específico para consultas históricas |
 
-## Por que `zeroAddress` para `from`?
+## ¿Por qué `zeroAddress` para `from`?
 
-Para operaciones de lectura, la dirección `from` no importa porque no se envia ninguna transacción, no se consume gas y no se modifica el estado.
+Para operaciones de lectura, la dirección `from` no importa porque no se envía ninguna transacción, no se consume gas y no se modifica el estado.
 
 ## Una nota sobre Go bindings
 
@@ -67,4 +67,4 @@ El **Go SDK** requiere que generes bindings con tipos seguros desde el ABI de tu
 cre generate-bindings evm
 ```
 
-Este paso unico crea metodos helper para lecturas, escrituras y decodificación de eventos - sin necesidad de definiciones ABI manuales.
+Este paso único crea métodos helper para lecturas, escrituras y decodificación de eventos - sin necesidad de definiciones ABI manuales.

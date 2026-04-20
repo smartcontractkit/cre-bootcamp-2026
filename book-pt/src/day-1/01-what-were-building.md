@@ -9,7 +9,7 @@ Estamos construindo um **Mercado de Previsão On-chain com IA** - um sistema com
 3. **Usuários podem solicitar a liquidação** de qualquer mercado
 4. **O CRE detecta automaticamente** solicitações de liquidação via Log Triggers
 5. **O Google Gemini AI** determina o resultado do mercado
-6. **O CRE escreve** o resultado verificado de volta on-chain
+6. **O CRE escreve** o resultado verificado on-chain
 7. **Vencedores resgatam** sua parte do pool total → `Sua aposta * (Pool Total / Pool Vencedor)`
 
 
@@ -34,7 +34,7 @@ Estamos construindo um **Mercado de Previsão On-chain com IA** - um sistema com
 │                    ┌──────────────┼───────────────────┐         │
 │                    ▼              ▼                   ▼         │
 │              EVM Read         Gemini AI           EVM Write     │
-│           (dados do mercado) (determinar resultado) (liquidar)  │
+│       (dados do mercado) (determinar resultado) (liquidar)  │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -60,7 +60,7 @@ Após completar este bootcamp, você será capaz de:
 | Configuração do CRE CLI | Instalar ferramentas, criar conta, verificar configuração |
 | Modelo Mental do CRE | O que é o CRE, Workflows, Capabilities, DONs |
 | Criando um Projeto CRE | `cre init`, estrutura do projeto, primeira simulação |
-| Scaffold CRE | `plan` sua aplicação antes de desenvolvê-la |
+| Scaffold CRE | Planeje sua aplicação antes de desenvolvê-la |
 
 **Final do Dia 1**: Você está pronto para criar um projeto CRE! 
 
@@ -70,9 +70,9 @@ Após completar este bootcamp, você será capaz de:
 | Tópico | O Que Você Vai Aprender |
 |--------|-------------------------|
 | Smart Contract | Desenvolver o PredictionMarket.sol  |
-| Interfaces | Construir um Contrato Compatível com CRE |
+| Interfaces | Construir um Contrato Inteligente Compatível com CRE |
 | HTTP Trigger | Receber requisições HTTP externas |
-| Capability EVM Write | Escrever dados na blockchain |
+| Capability EVM Write | Escrever dados em blockchain |
 | Workflow de Criação de Mercado | Criar e Simular a Criação de Mercado |
 
 **Final do Dia 2**: Você vai criar mercados on-chain via requisições HTTP!
@@ -83,7 +83,7 @@ Após completar este bootcamp, você será capaz de:
 | Tópico | O Que Você Vai Aprender |
 |--------|-------------------------|
 | Log Trigger | Reagir a eventos on-chain |
-| EVM Read | Ler estado de smart contracts |
+| EVM Read | Ler dados em smart contracts |
 | HTTP Capability | Fazer requisições HTTP |
 | Integração com IA | Chamar a API do Gemini com consenso |
 | Fazendo Previsões | Apostar em mercados com ETH |
@@ -92,6 +92,6 @@ Após completar este bootcamp, você será capaz de:
 **Final do Dia 3**: Liquidação completa com IA funcionando de ponta a ponta!
 
 
-## 🎬 Hora da Demo!
+## 🎬 Demonstração!
 
-Antes de mergulharmos na construção, vamos ver o resultado final em ação.
+Antes de mergulharmos no desenvolvimento, vamos ver como vai ficar o projeto final.

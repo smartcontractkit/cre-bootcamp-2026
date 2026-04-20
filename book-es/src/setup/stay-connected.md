@@ -1,10 +1,14 @@
 # Mantente Siempre Conectado
 
-## Unete a la Comunidad Chainlink
+### En Español
+- [Sigue a Chainlink ES en X (Twitter)](https://x.com/chainlinkesp)
+- [Interactúa con la comunidad en Telegram](https://t.me/chainlinkedesp)
 
-- [Suscribete al Newsletter de Desarrolladores Chainlink](https://pages.chain.link/subscribe)
+## Únete a la Comunidad Chainlink
+
+- [Suscríbete al Newsletter de Desarrolladores Chainlink](https://pages.chain.link/subscribe)
 - [Sigue a Chainlink en X (Twitter)](https://x.com/chainlink)
 - [Sigue a Chainlink en LinkedIn](https://www.linkedin.com/company/chainlink-labs/)
-- [Suscribete al canal oficial de YouTube de Chainlink](https://www.youtube.com/chainlink)
-- [Unete en Discord](https://discord.com/invite/chainlink)
+- [Suscríbete al canal oficial de YouTube de Chainlink](https://www.youtube.com/chainlink)
+- [Únete en Discord](https://discord.com/invite/chainlink)
 

@@ -7,12 +7,12 @@ Completa estos pasos **antes** de que comience el bootcamp para asegurar una exp
 Este libro está disponible en:
 
 ```bash
-https://smartcontractkit.github.io/cre-bootcamp-2026
+https://smartcontractkit.github.io/cre-bootcamp-2026/es
 ```
 
 ## Prerequisitos Importantes
 
-Para aprovechar al máximo este bootcamp, te recomendamos tener lo siguiente preparado **antes del Día 1**. Parte de esto se cubrirá brevemente para poder dedicar más tiempo a construir.
+Para aprovechar al máximo este bootcamp, te recomendamos tener lo siguiente preparado **antes del Día 1**. Parte de esto se cubrirá brevemente para poder dedicar más tiempo al desarrollo del proyecto.
 
 ### Configuración Requerida
 
@@ -26,10 +26,12 @@ Para aprovechar al máximo este bootcamp, te recomendamos tener lo siguiente pre
 
 ### Opcional
 
-- **Instalar mdBook** - Para poder compilar y leer la documentación localmente
-  ```bash
-  cargo install mdbook
-  ```
+📚 Puedes **instalar mdBook** para compilar y leer la documentación localmente.
+
+Referencias:
+- [mdBook releases](https://github.com/rust-lang/mdBook/releases)
+- [mdBook](https://github.com/rust-lang/mdBook)
+- [mdBook Docs](https://rust-lang.github.io/mdBook/)
 
 ## Repositorio de Referencia
 

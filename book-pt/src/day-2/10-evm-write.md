@@ -23,7 +23,7 @@ import {
 } from "@chainlink/cre-sdk";
 import { encodeAbiParameters, parseAbiParameters } from "viem";
 
-// Tipos inline
+// Inline types
 interface CreateMarketPayload {
   question: string;
 }
@@ -37,7 +37,7 @@ type Config = {
     }>;
 };
 
-// Parâmetros ABI para a função createMarket
+// ABI parameters for createMarket function
 const CREATE_MARKET_PARAMS = parseAbiParameters("string question");
 
 export function onHttpTrigger(runtime: Runtime<Config>, payload: HTTPPayload): string {
@@ -47,7 +47,7 @@ export function onHttpTrigger(runtime: Runtime<Config>, payload: HTTPPayload): s
 
   try {
     // ─────────────────────────────────────────────────────────────
-    // Passo 1: Analisar e validar o payload recebido
+    // Step 1: Parse and validate the incoming payload
     // ─────────────────────────────────────────────────────────────
     if (!payload.input || payload.input.length === 0) {
       runtime.log("[ERROR] Empty request payload");
@@ -63,7 +63,7 @@ export function onHttpTrigger(runtime: Runtime<Config>, payload: HTTPPayload): s
     }
 
     // ─────────────────────────────────────────────────────────────
-    // Passo 2: Obter rede e criar cliente EVM
+    // Step 2: Get network and create EVM client
     // ─────────────────────────────────────────────────────────────
     const evmConfig = runtime.config.evms[0];
 
@@ -83,14 +83,14 @@ export function onHttpTrigger(runtime: Runtime<Config>, payload: HTTPPayload): s
     const evmClient = new cre.capabilities.EVMClient(network.chainSelector.selector);
 
     // ─────────────────────────────────────────────────────────────
-    // Passo 3: Codificar os dados do mercado para o smart contract
+    // Step 3: Encode the market data for the smart contract
     // ─────────────────────────────────────────────────────────────
     runtime.log("[Step 3] Encoding market data...");
 
     const reportData = encodeAbiParameters(CREATE_MARKET_PARAMS, [inputData.question]);
 
     // ─────────────────────────────────────────────────────────────
-    // Passo 4: Gerar um relatório CRE assinado
+    // Step 4: Generate a signed CRE report
     // ─────────────────────────────────────────────────────────────
     runtime.log("[Step 4] Generating CRE report...");
 
@@ -104,7 +104,7 @@ export function onHttpTrigger(runtime: Runtime<Config>, payload: HTTPPayload): s
       .result();
 
     // ─────────────────────────────────────────────────────────────
-    // Passo 5: Escrever o relatório no smart contract
+    // Step 5: Write the report to the smart contract
     // ─────────────────────────────────────────────────────────────
     runtime.log(`[Step 5] Writing to contract: ${evmConfig.marketAddress}`);
 
@@ -119,7 +119,7 @@ export function onHttpTrigger(runtime: Runtime<Config>, payload: HTTPPayload): s
       .result();
 
     // ─────────────────────────────────────────────────────────────
-    // Passo 6: Verificar resultado e retornar hash da transação
+    // Step 6: Check result and return transaction hash
     // ─────────────────────────────────────────────────────────────
     if (writeResult.txStatus === TxStatus.SUCCESS) {
       const txHash = bytesToHex(writeResult.txHash || new Uint8Array(32));
@@ -162,7 +162,7 @@ Verifique se você atualizou o `my-workflow/config.staging.json` com o endereço
 O arquivo `.env` foi criado anteriormente na configuração do projeto CRE. Certifique-se de que está no diretório `prediction-market` e contém:
 
 ```bash
-# Configuração CRE
+# CRE Configuration
 CRE_ETH_PRIVATE_KEY=your_private_key_here
 CRE_TARGET=staging-settings
 GEMINI_API_KEY_VAR=your_gemini_api_key_here
@@ -182,7 +182,6 @@ Para realmente transmitir transações durante a simulação, use a flag `--broa
 - No terminal, execute:
 
 ```bash
-# A partir do diretório prediction-market
 cre workflow simulate my-workflow --broadcast
 ```
 

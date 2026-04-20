@@ -1,6 +1,6 @@
 # Flujo Completo: Conectando Todo
 
-Es hora de combinar todo en un flujo de trabajo de liquidación completo y funcional!
+Es hora de combinarlo todo en un workflow de liquidación de mercado completo y funcional!
 
 ## El Flujo Completo
 
@@ -77,9 +77,9 @@ type Config = {
 };
 
 interface Market {
-  creator: string;
-  createdAt: bigint;
-  settledAt: bigint;
+  creator: `0x${string}`;
+  createdAt: number;
+  settledAt: number;
   settled: boolean;
   confidence: number;
   outcome: number; // 0 = Yes, 1 = No
@@ -199,7 +199,7 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
       .callContract(runtime, {
         call: encodeCallMsg({
           from: zeroAddress,
-          to: evmConfig.marketAddress,
+          to: evmConfig.marketAddress as `0x${string}`,
           data: callData,
         })
       })
@@ -305,7 +305,9 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
 
 ## Haciendo una Predicción
 
-Antes de solicitar la liquidación, hagamos una predicción en el mercado. Esto demuestra el flujo completo - predicciones con ETH, liquidación por IA, y ganadores reclamando su parte.
+Antes de solicitar la liquidación, hagamos una predicción en el mercado. 
+
+Esto demuestra el flujo completo - predicciones con ETH, liquidación por IA, y ganadores reclamando su parte.
 
 > En una computadora con Windows, usa `Git Bash` para ejecutar todos los comandos **cast**.
 
@@ -318,7 +320,7 @@ Predigamos:
 - En el market id #0
 - Pagando 0.01 ETH
 
-Ejecuta este comando para ejecutar la función predict en PredictionMarket.sol desplegado en la variable $MARKET_ADDRESS:
+Envía este comando para ejecutar la función `predict` en PredictionMarket.sol que está desplegado en la variable $MARKET_ADDRESS:
 
 ```bash
 # Predict YES on market #0 with 0.01 ETH
@@ -329,7 +331,7 @@ cast send $MARKET_ADDRESS \
   --private-key $CRE_ETH_PRIVATE_KEY
 ```
 
-Luego podemos ver los detalles del mercado de nuevo:
+Luego podemos ver los detalles del mercado de nuevo, incluyendo la predicción:
 
 ```bash
 cast call $MARKET_ADDRESS \
@@ -338,11 +340,15 @@ cast call $MARKET_ADDRESS \
   --rpc-url "https://ethereum-sepolia-rpc.publicnode.com"
 ```
 
-E incluso obtener solo nuestra predicción:
+E incluso obtener solo nuestra predicción!
+
+- Establece la dirección de tu wallet en la variable `PREDICTOR`:
 
 ```bash
 export PREDICTOR=0xYOUR_WALLET_ADDRESS
 ```
+
+- Y luego ejecutar:
 
 ```bash
 cast call $MARKET_ADDRESS \
@@ -351,8 +357,8 @@ cast call $MARKET_ADDRESS \
   --rpc-url "https://ethereum-sepolia-rpc.publicnode.com"
 ```
 
-- Puedes tener multiples participantes prediciendo - algunos YES, algunos NO. 
-- Despues de que CRE liquide el mercado, los ganadores pueden llamar a `claim()` para recibir su parte del pool total!
+- Puedes tener múltiples participantes prediciendo - algunos YES, algunos NO. 
+- Después de que CRE liquide el mercado, los ganadores pueden llamar la functión `claim()` para recibir su parte del pool total!
 
 ---
 
@@ -399,7 +405,7 @@ Enter transaction hash (0x...):
 
 Pega el hash de la transacción del Paso 1.
 
-### Paso 5: Ingresar Indice del Evento
+### Paso 5: Ingresar Índice del Evento
 
 ```bash
 Enter event index (0-based): 0
@@ -448,7 +454,7 @@ cast call $MARKET_ADDRESS \
   --rpc-url "https://ethereum-sepolia-rpc.publicnode.com"
 ```
 
-Deberias ver `settled: true` y el resultado determinado por IA!
+Deberías ver `settled: true` y el resultado determinado por IA!
 
 ### Paso 7: Reclamar Tus Ganancias
 
@@ -463,21 +469,21 @@ cast send $MARKET_ADDRESS \
 
 ---
 
-## Lo Lograste!
+## **Felicitaciones!**
 
-**Felicitaciones!** Acabas de construir y ejecutar un mercado de predicción completo impulsado por IA usando CRE!
+Acabas de construir y ejecutar un mercado de predicción completo impulsado por IA usando CRE!
 
 Repasemos lo que lograste:
 
 | Capacidad | Lo Que Construiste |
 |-----------|-------------------|
 | **HTTP Trigger** | Creación de mercados via solicitudes API |
-| **Log Trigger** | Automatizacion de liquidación basada en eventos |
+| **Log Trigger** | Automatización de liquidación basada en eventos |
 | **EVM Read** | Lectura del estado del mercado desde la blockchain |
 | **HTTP (IA)** | Consultas a Gemini AI para resultados del mundo real |
 | **EVM Write** | Escrituras verificadas on-chain con consenso del DON |
 
-Tu flujo de trabajo ahora:
+Tu workflow ahora:
 - Crea mercados bajo demanda via HTTP
 - Escucha solicitudes de liquidación via eventos de blockchain
 - Lee datos del mercado de tu smart contract
@@ -489,4 +495,4 @@ Tu flujo de trabajo ahora:
 
 ## Siguientes Pasos
 
-Ve al capitulo final para un recorrido completo de extremo a extremo y lo que sigue en tu viaje con CRE!
+Ve al capítulo final para un recorrido completo, de extremo a extremo, y lo que sigue en tu viaje con CRE!

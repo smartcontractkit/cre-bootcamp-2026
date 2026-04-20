@@ -1,8 +1,8 @@
 # Conceptos de HTTP Trigger: Recibiendo Solicitudes
 
-## Familiarizate con la capacidad HTTP Trigger
+## Familiarízate con la capacidad HTTP Trigger
 
-El **HTTP Trigger** se activa cuando se realiza una solicitud HTTP al endpoint designado del workflow. Esto te permite iniciar flujos de trabajo desde sistemas externos, perfecto para:
+El **HTTP Trigger** se activa cuando se realiza una solicitud HTTP al endpoint designado del workflow. Esto te permite iniciar workflows desde sistemas externos, perfecto para:
 - Crear recursos (como nuestros mercados)
 - Flujos de trabajo impulsados por API
 - Integración con sistemas externos

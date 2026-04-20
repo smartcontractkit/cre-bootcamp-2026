@@ -134,9 +134,15 @@ source .env
 
 Verificar se você tem mercados criados (saída decodificada)
 
+Configure a variável MARKET_ADDRESS:
+
 ```bash
 export MARKET_ADDRESS=0xYOUR_CONTRACT_ADDRESS
+```
 
+Execute a função `getMarket` no Smart Contract Prediction Market:
+
+```bash
 cast call $MARKET_ADDRESS \
   "getMarket(uint256) returns ((address,uint48,uint48,bool,uint16,uint8,uint256,uint256,string))" \
   0 \

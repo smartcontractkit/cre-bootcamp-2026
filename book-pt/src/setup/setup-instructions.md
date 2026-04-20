@@ -7,29 +7,31 @@ Complete estes passos **antes** do início do bootcamp para garantir uma experi�
 Este livro está disponível em:
 
 ```bash
-https://smartcontractkit.github.io/cre-bootcamp-2026
+https://smartcontractkit.github.io/cre-bootcamp-2026/pt
 ```
 
 ## Pré-requisitos Importantes
 
-Para aproveitar ao máximo este bootcamp, recomendamos que você tenha o seguinte preparado **antes do Dia 1**. Alguns itens serão abordados brevemente para que possamos dedicar mais tempo à construção.
+Para aproveitar ao máximo este bootcamp, recomendamos que você tenha o seguinte preparado **antes do Dia 1**. Alguns itens serão abordados brevemente para que possamos dedicar mais tempo ao desenvolvimento do projeto.
 
 ### Configuração Obrigatória
 
-- **Node.js v20 ou superior** - [Baixe aqui](https://nodejs.org/)
-- **Bun v1.3 ou superior** - [Baixe aqui](https://bun.sh/docs/installation)
+- **Node.js v20 ou superior** - [Download aqui](https://nodejs.org/)
+- **Bun v1.3 ou superior** - [Download aqui](https://bun.sh/docs/installation)
 - **CRE CLI** - [Instruções de instalação](https://docs.chain.link/cre/getting-started/cli-installation)
 - **Foundry** - [Instruções de instalação](https://book.getfoundry.sh/getting-started/installation)
 - **Adicione a rede Ethereum Sepolia à sua carteira** - [Adicionar rede aqui](https://chainlist.org/chain/11155111)
 - **Obtenha ETH Ethereum Sepolia do faucet** - [Chainlink Faucet](https://faucets.chain.link/sepolia)
 - **Chave de API do Gemini LLM** - [Obtenha no Google AI Studio](https://aistudio.google.com/apikey)
 
-### Recomendado
+### Opcional
 
-- 📚 **Instale o mdBook** - Para que você possa compilar e ler a documentação localmente
-  ```bash
-  cargo install mdbook
-  ```
+📚 Você pode **Instalar o mdBook** para gerar e ler a documentação localmente.
+
+Referencias:
+- [mdBook releases](https://github.com/rust-lang/mdBook/releases)
+- [mdBook](https://github.com/rust-lang/mdBook)
+- [mdBook Docs](https://rust-lang.github.io/mdBook/)
 
 ## Repositório de Referência
 
