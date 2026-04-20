@@ -4,7 +4,7 @@ Este projeto foi criado no Hackathon da Chainlink [Convergence](https://chain.li
 
 O objetivo é arquitetar cada workflow e suas regras de negócio, visualizando os triggers e capabilities utilizados, assim como os smart contracts e sistemas externos.
 
-[Scaffold CRE](https://scaffold-cre.vercel.app/)
+[Scaffold CRE](https://cre.solange.dev/)
 
 
 ## 🎉 Dia 1 Completo!
