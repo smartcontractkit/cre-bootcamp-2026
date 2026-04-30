@@ -132,7 +132,7 @@ Puedes ingresar una ruta de archivo o JSON directamente.
 ### 2. Ingresar el Payload JSON
 
 El payload será la pregunta con la cual estamos creando el mercado de predicción.
-Probemos con algo del pasado, que ya sabemos la respuesta:
+Probemos con algo del pasado, que ya sabemos la respuesta, pero como si aún fuera a suceder:
 
 `Will Argentina win the 2022 World Cup?`
 

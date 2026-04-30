@@ -11,7 +11,7 @@ A capability EVM Write permite que seu workflow submeta relatórios criptografic
 Diferente de aplicações web3 tradicionais que enviam transações diretamente, o CRE usa um processo seguro de dois passos:
 
 1. **Gerar um relatório assinado** - Seus dados são codificados em ABI e empacotados em um "pacote" criptograficamente assinado
-2. **Submeter o relatório** - O relatório assinado é submetido ao seu contrato consumidor via o `KeystoneForwarder` da Chainlink
+2. **Submeter o relatório** - O relatório assinado é submetido ao seu smart contract consumidor via o `KeystoneForwarder` da Chainlink
 
 ### O processo de escrita em dois passos
 
@@ -27,7 +27,7 @@ Veja como fazer isso para o mercado que obtivemos do HTTP Trigger:
 import { encodeAbiParameters, parseAbiParameters } from "viem";
 import { hexToBase64 } from "@chainlink/cre-sdk";
 
-// Definir parâmetros ABI (devem corresponder ao que seu contrato espera)
+// Definir parâmetros ABI (devem corresponder ao que seu smart contract espera)
 const PARAMS = parseAbiParameters("string question");
 
 // Codificar seus dados
@@ -62,7 +62,7 @@ import { bytesToHex, TxStatus } from "@chainlink/cre-sdk";
 
 const writeResult = evmClient
   .writeReport(runtime, {
-    receiver: "0x...", // Endereço do seu contrato consumidor
+    receiver: "0x...", // Endereço do seu smart contract consumidor
     report: reportResponse, // O relatório assinado do Passo 1
     gasConfig: {
       gasLimit: "500000", // Limite de gas para a transação
@@ -81,7 +81,7 @@ throw new Error(`Transaction failed: ${writeResult.txStatus}`);
 
 **Parâmetros do WriteReport:**
 
-- `receiver`: `string` - O endereço do seu contrato consumidor (deve implementar a interface `IReceiver`)
+- `receiver`: `string` - O endereço do seu smart contract consumidor (deve implementar a interface `IReceiver`)
 - `report`: `ReportResponse` - O relatório assinado de `runtime.report()`
 - `gasConfig`: `{ gasLimit: string }` - Configuração opcional de gas
 

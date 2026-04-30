@@ -1,4 +1,4 @@
-# Sumário
+# Índice
 
 # 🖥️ Instruções de Configuração
 

@@ -147,7 +147,7 @@ Update `my-workflow/main.ts` to register the Log Trigger:
 ```typescript
 // prediction-market/my-workflow/main.ts
 
-import { cre, Runner, getNetwork } from "@chainlink/cre-sdk";
+import { cre, Runner, getNetwork, hexToBase64 } from "@chainlink/cre-sdk";
 import { keccak256, toHex } from "viem";
 import { onHttpTrigger } from "./httpCallback";
 import { onLogTrigger } from "./logCallback";
@@ -190,8 +190,8 @@ const initWorkflow = (config: Config) => {
     // Day 2: Log Trigger - Event-Driven Settlement ← NEW!
     cre.handler(
       evmClient.logTrigger({
-        addresses: [config.evms[0].marketAddress],
-        topics: [{ values: [eventHash] }],
+        addresses: [hexToBase64(config.evms[0].marketAddress as `0x${string}`)],
+        topics: [{ values: [hexToBase64(eventHash)] }],
         confidence: "CONFIDENCE_LEVEL_FINALIZED",
       }),
       onLogTrigger

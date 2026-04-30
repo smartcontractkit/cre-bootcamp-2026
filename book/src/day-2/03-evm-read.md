@@ -143,9 +143,9 @@ type Config = {
 };
 
 interface Market {
-  creator: string;
-  createdAt: bigint;
-  settledAt: bigint;
+  creator: `0x${string}`;
+  createdAt: number;
+  settledAt: number;
   settled: boolean;
   confidence: number;
   outcome: number;
@@ -223,7 +223,7 @@ export function onLogTrigger(runtime: Runtime<Config>, log: EVMLog): string {
     .callContract(runtime, {
       call: encodeCallMsg({
         from: zeroAddress,
-        to: evmConfig.marketAddress,
+        to: evmConfig.marketAddress as `0x${string}`,
         data: callData,
       }),
     })
