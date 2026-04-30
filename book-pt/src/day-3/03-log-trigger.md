@@ -249,7 +249,7 @@ Workflow Simulation Result:
 [SIMULATION] Execution finished signal received
 ```
 
-## Principais Conclusões
+## Tópicos Principais
 
 - **Log Triggers** reagem a eventos on-chain automaticamente
 - Use `keccak256(toHex("EventName(types)"))` para calcular o hash do evento

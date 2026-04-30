@@ -14,7 +14,7 @@ Aqui está a jornada completa desde a criação do mercado até o resgate dos ga
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  0. DEPLOY DO CONTRATO (Foundry)                                │
-│     └─► forge create → PredictionMarket implantado na Sepolia   │
+│     └─► forge create → PredictionMarket publicado na Sepolia   │
 │                                                                 │
 │  1. CRIAR MERCADO (HTTP Trigger)                                │
 │     └─► HTTP Request → CRE Workflow → EVM Write → Mercado Ativo│

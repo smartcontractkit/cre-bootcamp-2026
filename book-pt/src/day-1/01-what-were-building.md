@@ -2,7 +2,7 @@
 
 ## O Caso de Uso: Mercados de Previsão com IA
 
-Estamos construindo um **Mercado de Previsão On-chain com IA** - um sistema completo onde:
+Vamos construir um **Mercado de Previsão On-chain com IA** - um sistema completo onde:
 
 1. **Mercados on-chain são criados** via workflows CRE acionados por HTTP
 2. **Usuários fazem previsões** apostando ETH em Sim ou Não

@@ -140,13 +140,13 @@ export function onHttpTrigger(runtime: Runtime<Config>, payload: HTTPPayload): s
 
 ## Executando o Workflow Completo
 
-### 1. Certifique-se de que seu contrato está implantado
+### 1. Certifique-se de que seu smart contract está publicado
 
-Verifique se você atualizou o `my-workflow/config.staging.json` com o endereço do seu contrato implantado:
+Verifique se você atualizou o `my-workflow/config.staging.json` com o endereço do seu smart contract publicado:
 
 ```json
 {
-  "geminiModel": "gemini-2.0-flash",
+  "geminiModel": "gemini-2.5-flash",
   "evms": [
     {
       "marketAddress": "0xYOUR_CONTRACT_ADDRESS_HERE",

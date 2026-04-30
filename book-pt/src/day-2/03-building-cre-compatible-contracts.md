@@ -28,17 +28,17 @@ Para simulações na rede Ethereum Sepolia, usaremos um smart contract mock, cha
 
 > O contrato `MockKeystoneForwarder` na Ethereum Sepolia está localizado em: [https://sepolia.etherscan.io/address/0x15fc6ae953e024d975e77382eeec56a9101f9f88#code](https://sepolia.etherscan.io/address/0x15fc6ae953e024d975e77382eeec56a9101f9f88#code)
 
-Veja como o CRE entrega dados ao seu contrato:
+Veja como o CRE entrega dados ao seu smart contract:
 
-1. **O CRE não chama seu contrato diretamente** - ele submete um relatório assinado a um contrato `KeystoneForwarder` da Chainlink
+1. **O CRE não chama seu smart contract diretamente** - ele submete um relatório assinado a um contrato `KeystoneForwarder` da Chainlink
 2. **O forwarder valida assinaturas** - garantindo que o relatório veio de uma DON confiável
-3. **O forwarder chama `onReport()`** - entregando os dados verificados ao seu contrato
+3. **O forwarder chama `onReport()`** - entregando os dados verificados ao seu smart contract
 4. **Você decodifica e processa** - extrai os dados dos bytes do relatório
 
 ### O padrão de dois passos
 
-Este é o padrão de dois passos, que garante verificação criptográfica de todos os dados antes de chegarem ao seu contrato:
+Este é o padrão de dois passos, que garante verificação criptográfica de todos os dados antes de chegarem ao seu smart contract:
 
-> workflow → forwarder → seu contrato
+> workflow → forwarder → seu smart contract
 
 

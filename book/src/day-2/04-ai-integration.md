@@ -123,7 +123,7 @@ Now let's apply these concepts to build our AI integration.
 ### Gemini API Overview
 
 We'll use Google's Gemini API:
-- Endpoint: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`
+- Endpoint: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`
 - Authentication: API key in header
 - Feature: Google Search grounding for factual answers
 

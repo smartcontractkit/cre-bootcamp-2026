@@ -61,7 +61,7 @@ Para operações de leitura, o endereço `from` não importa porque nenhuma tran
 
 ## Uma nota sobre bindings em Go
 
-O **Go SDK** requer que você gere bindings type-safe a partir da ABI do seu contrato antes de interagir com ele:
+O **Go SDK** requer que você gere bindings type-safe a partir da ABI do seu smart contract antes de interagir com ele:
 
 ```bash
 cre generate-bindings evm
