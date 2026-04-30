@@ -132,11 +132,11 @@ Você pode inserir um caminho de arquivo ou JSON diretamente.
 ### 2. Inserir o Payload JSON
 
 O payload será a pergunta com a qual estamos criando o mercado de previsão.
-Vamos testar algo do passado, que já sabemos a resposta:
+Vamos testar algo do passado, que já sabemos a resposta, mas como se ainda fosse acontecer:
 
-`A Argentina venceu a Copa do Mundo de 2022?`
+`A Argentina vai vencer a Copa do Mundo de 2022?`
 
-Usando o formato JSON, cole:
+Usando o formato JSON, copie e cole:
 
 ```json
 {"question": "Will Argentina win the 2022 World Cup?"}

@@ -73,10 +73,10 @@ Transaction hash: 0x...
 
 **Salve o endereço do contrato!** 
 
-Este é o endereço do `PredictionMarket.sol` implantado durante o passo anterior.
+Este é o endereço do `PredictionMarket.sol` publicado durante o passo anterior.
 É o endereço **Deployed to**.
 
-Exemplo - Endereço do PredictionMarket implantado por nós: 
+Exemplo - Endereço do PredictionMarket publicado por nós: 
 [0x3c01d85D7d2b7C505b1317b1e7f418334A7777bd](https://sepolia.etherscan.io/address/0x3c01d85D7d2b7C505b1317b1e7f418334A7777bd)
 
 
@@ -94,7 +94,7 @@ cd ../my-workflow
 
 ```json
 {
-  "geminiModel": "gemini-2.0-flash",
+  "geminiModel": "gemini-2.5-flash",
   "evms": [
     {
       "marketAddress": "0xYOUR_CONTRACT_ADDRESS_HERE",
@@ -105,16 +105,16 @@ cd ../my-workflow
 }
 ```
 
-Atualize **marketAddress** com o endereço do `PredictionMarket.sol` implantado durante o passo anterior.
+Atualize **marketAddress** com o endereço do `PredictionMarket.sol` publicado durante o passo anterior.
 
 Definimos `gasLimit` como `500000` para este exemplo porque é suficiente, mas outros casos de uso podem consumir mais gas.
 
-> **Nota**: Criaremos mercados via o workflow de HTTP trigger nos próximos capítulos. Por enquanto, você só precisa do contrato implantado!
+> **Nota**: Criaremos mercados via o workflow de HTTP trigger nos próximos capítulos. Por enquanto, você só precisa do contrato publicado!
 
 ## Resumo
 
 Agora você tem:
-- ✅ Um smart contract `PredictionMarket` implantado na Sepolia
+- ✅ Um smart contract `PredictionMarket` publicado na Sepolia
 - ✅ Um evento (`SettlementRequested`) que o CRE pode escutar
 - ✅ Uma função (`onReport`) que o CRE pode chamar com resultados determinados por IA
 - ✅ Lógica de pagamento para vencedores após a liquidação

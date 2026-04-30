@@ -9,7 +9,7 @@ Ahora apliquemos los conceptos de HTTP capability para construir nuestra integra
 ### Visión General de la API de Gemini
 
 Usaremos la API de Google Gemini:
-- Endpoint: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`
+- Endpoint: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`
 - Autenticación: Clave API en el header
 - Característica: Google Search grounding para respuestas factuales
 
